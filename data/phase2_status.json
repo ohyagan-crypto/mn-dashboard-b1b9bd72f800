@@ -1,0 +1,385 @@
+{
+  "updatedAt": "2026-07-15",
+  "phase": "進行中工作",
+  "summary": "把未完成、待確認、需要後續處理的工作集中在這裡；完成或不需要的項目可在網站上直接標記完成或刪除。",
+  "ongoing": [
+    {
+      "id": "voice-alarm-automate",
+      "status": "進行中",
+      "category": "語音提醒",
+      "title": "手機端 Automate 鬧鐘測試",
+      "note": "用 Telegram 語音觸發 ALARM 格式，確認手機可自動建立中文鬧鐘名稱。"
+    },
+    {
+      "id": "android-bridge-app",
+      "status": "下一步",
+      "category": "商品化",
+      "title": "正式 Android 鬧鐘橋接 App",
+      "note": "內測通過後，不依賴 Tasker 或 Automate，改做自己的橋接 App。"
+    },
+    {
+      "id": "stock-report-calibration",
+      "status": "進行中",
+      "category": "股票",
+      "title": "股票呈報每日更新與持股校準",
+      "note": "每日行情已恢復自動更新；持股、成本、現金仍需依券商 App 校準。"
+    },
+    {
+      "id": "task-backend-upgrade",
+      "status": "待升級",
+      "category": "任務後台",
+      "title": "任務後台資料庫與跨裝置同步",
+      "note": "目前完成、刪除先存在本機瀏覽器；正式版需要接資料庫與權限。"
+    },
+    {
+      "id": "remote-laptop-operation",
+      "status": "重要",
+      "category": "遠端",
+      "title": "遠端筆電操作專案",
+      "note": "整理桌面、D 槽資料、LINE 聯絡人、網站資料與遠端操作流程，屬於重要工作持續追蹤。"
+    },
+    {
+      "id": "phase-one-patch-work",
+      "status": "重要",
+      "category": "系統補強",
+      "title": "第一階段缺口補強",
+      "note": "中文修正、狀態看板、慢任務回報、語音測試入口與常用指令，持續作為手機助理品質基準。"
+    },
+    {
+      "id": "line-contact-cleanup",
+      "status": "待處理",
+      "category": "LINE",
+      "title": "LINE 聯絡人整理與分類 Excel",
+      "note": "整理好友名單、分類選單、清理後姓名欄位與安全分批發送規則。"
+    },
+    {
+      "id": "sgood-website-adjustment",
+      "status": "進行中",
+      "category": "網站專案",
+      "title": "微新超好網站調整專案",
+      "note": "把微新超好整理成三層式經銷商工作台：公開層、經銷商密碼層、核心內部層。第一步先做草稿頁與手機版第一屏，不動正式網站。",
+      "links": [
+        {
+          "label": "專案摘要",
+          "href": "files/sgood_website_adjustment/index.html"
+        },
+        {
+          "label": "目前網站",
+          "href": "https://www.mini-new.com/sgoodbio/"
+        }
+      ]
+    },
+    {
+      "id": "deliverables-return-rule",
+      "status": "持續執行",
+      "category": "交付",
+      "title": "成品交付回聊天室與狀態追蹤",
+      "note": "PPT、圖片、影片、Word、Excel、ZIP 等最終成品要能在手機上找到。"
+    }
+  ],
+  "usableProjects": [
+    {
+      "id": "assistant-demo-gallery",
+      "status": "可展示",
+      "category": "手機助理",
+      "title": "手機助理示範案例庫",
+      "note": "集中展示不同對象適合的手機助理案例，可搜尋太太、家庭、省錢、AI 等關鍵字，方便現場介紹與推廣。",
+      "links": [
+        {
+          "label": "打開案例庫",
+          "href": "files/assistant_demo_gallery/index.html"
+        },
+        {
+          "label": "雙薪家庭太太",
+          "href": "files/family_mobile_assistant/index.html"
+        }
+      ]
+    },
+    {
+      "id": "mobile-dashboard",
+      "status": "可用",
+      "title": "手機助理總覽",
+      "note": "手機首頁入口、PWA 圖示、Telegram 返回、進行中工作、可用專案與歷史紀錄。",
+      "links": [
+        {
+          "label": "開啟總覽",
+          "href": "./"
+        }
+      ]
+    },
+    {
+      "id": "mobile-assistant-onboarding",
+      "status": "可用",
+      "category": "推廣工具",
+      "title": "手機助理需求問卷產生器",
+      "note": "給新使用者先填需求問卷，填完後自動產生適合他的手機助理首頁架構、AI 分工、每日流程與交接摘要。",
+      "links": [
+        {
+          "label": "打開問卷",
+          "href": "files/mobile_assistant_onboarding/index.html"
+        },
+        {
+          "label": "手機助理",
+          "href": "./"
+        }
+      ]
+    },
+    {
+      "id": "sgood-website-adjustment",
+      "status": "進行中",
+      "category": "網站專案",
+      "title": "微新超好網站調整專案",
+      "note": "網站重整規劃與草稿頁製作入口，包含第一屏設計、三層架構、ESC 主推與經銷商工作台方向。",
+      "links": [
+        {
+          "label": "專案摘要",
+          "href": "files/sgood_website_adjustment/index.html"
+        },
+        {
+          "label": "目前網站",
+          "href": "https://www.mini-new.com/sgoodbio/"
+        }
+      ]
+    },
+    {
+      "id": "stock-report",
+      "status": "可用",
+      "title": "每日股票呈報",
+      "note": "每日行情、持股損益、新聞、技術面、權證與下單提醒；持股資料需由券商 App 定期校準。",
+      "links": [
+        {
+          "label": "打開股票呈報",
+          "href": "files/stock_investment_project/morning_report.html"
+        }
+      ]
+    },
+    {
+      "id": "registration-system",
+      "status": "可用",
+      "title": "報名系統與後台",
+      "note": "微新集訓、東方禪柔課程與總後台，可填報名也可看人數。",
+      "links": [
+        {
+          "label": "報名總後台",
+          "href": "registrations/index.html?key=mn-admin-20260626"
+        }
+      ]
+    },
+    {
+      "id": "sgood-catalog",
+      "status": "可用",
+      "title": "超好生醫產品總表",
+      "note": "產品分類、重點說明與產品頁連結，方便新夥伴快速理解。",
+      "links": [
+        {
+          "label": "產品總表",
+          "href": "files/sgood_product_catalog/index.html"
+        }
+      ]
+    },
+    {
+      "id": "new-partner-guide",
+      "status": "可用",
+      "title": "微新超好網站使用教學",
+      "note": "制度、產品、行事曆、會議室、分期與代購流程教學。",
+      "links": [
+        {
+          "label": "打開教學",
+          "href": "files/sgood_new_partner_guide/index.html"
+        },
+        {
+          "label": "團隊網站",
+          "href": "https://mini-new.com/sgoodbio/"
+        }
+      ]
+    },
+    {
+      "id": "tools-1027",
+      "status": "可用",
+      "title": "1027 行動系統",
+      "note": "10 位顧客、2 位經營夥伴、7 人小組的行動工作台。",
+      "links": [
+        {
+          "label": "最新平台",
+          "href": "files/tools_1027_platform_latest/index.html"
+        },
+        {
+          "label": "LINE 分享版",
+          "href": "files/tools_1027_line_share/index.html"
+        }
+      ]
+    },
+    {
+      "id": "command-center",
+      "status": "可用",
+      "title": "常用指令中心",
+      "note": "快速複製 #file、#img、#ppt、#stock、#stop 等常用指令並回到 Telegram。",
+      "links": [
+        {
+          "label": "查看指令",
+          "href": "#commands"
+        }
+      ]
+    },
+    {
+      "id": "ai-short-drama-studio",
+      "status": "可用素材",
+      "title": "AI 短劇製作工具箱",
+      "note": "腳本、分鏡、字幕、Logo 浮水印規則與示範影片已整理好，可當影片製作素材庫。",
+      "links": [
+        {
+          "label": "專案資料",
+          "href": "files/ai_short_drama_studio/"
+        },
+        {
+          "label": "示範影片",
+          "href": "files/ai_short_drama_studio/exports/telegram_video_mini_new_supplied_watermark_20260629.mp4"
+        }
+      ]
+    }
+  ],
+  "history": [
+    {
+      "id": "phase-one-board",
+      "status": "已合併",
+      "title": "第一階段啟動看板",
+      "note": "總覽頁、PWA 圖示、Telegram 返回、專案入口、報名入口與交付規則已完成，內容合併到目前總覽。"
+    },
+    {
+      "id": "old-reminders",
+      "status": "過期",
+      "title": "6/30 與 7/6 前舊提醒",
+      "note": "協會補缺、發票、56PV、小件帶回等舊提醒已移到歷史，必要時可刪除。"
+    },
+    {
+      "id": "skill-library-section",
+      "status": "已合併",
+      "title": "技能庫獨立區塊",
+      "note": "技能說明併入可用專案與常用指令，首頁不再單獨佔一大段。"
+    },
+    {
+      "id": "commercialization-section",
+      "status": "已合併",
+      "title": "商品化準備獨立區塊",
+      "note": "商品化重點併入進行中工作，不再分散成單獨區塊。"
+    },
+    {
+      "id": "old-reminder-todo-section",
+      "status": "已合併",
+      "title": "提醒事項與待辦事項獨立區塊",
+      "note": "有效工作已併入進行中工作，過期提醒留在歷史紀錄，可由網站刪除。"
+    }
+  ],
+  "todos": [
+    {
+      "id": "todo-facebook-daily-growth",
+      "title": "每天完成臉書粉專日課",
+      "priority": "高",
+      "completeBy": "",
+      "note": "依照上方每日清單完成：發 Reels、發限動、互動留言、回私訊、整理名單與明天題目。"
+    },
+    {
+      "id": "todo-stock-holdings-check",
+      "title": "用券商 App 校準股票持股與成本",
+      "priority": "高",
+      "completeBy": "2026-07-09T18:00",
+      "note": "確認現金、庫存、成本與權證口數，讓每日損益更準。"
+    },
+    {
+      "id": "todo-automate-alarm-test",
+      "title": "手機端 Automate 鬧鐘測試",
+      "priority": "高",
+      "completeBy": "2026-07-10T21:00",
+      "note": "測試 Telegram 語音提醒是否能建立中文鬧鐘名稱。"
+    },
+    {
+      "id": "todo-line-contact-excel",
+      "title": "LINE 聯絡人整理成 Excel",
+      "priority": "中",
+      "completeBy": "",
+      "note": "整理分類選單、清理後姓名欄位與安全分批發送規則。"
+    }
+  ],
+  "socialDailyTasks": [
+    {
+      "id": "facebook-morning-insight",
+      "time": "早上 5 分鐘",
+      "title": "看昨天數據",
+      "note": "記下觀看最高的 Reels、最多互動貼文、私訊數與新增名單。"
+    },
+    {
+      "id": "facebook-reels-post",
+      "time": "上午或中午",
+      "title": "發 1 支 Reels",
+      "note": "15～35 秒，開頭 3 秒講痛點，結尾引導留言「AI」「健康」「開始」。"
+    },
+    {
+      "id": "facebook-story-life",
+      "time": "中午或下午",
+      "title": "發 1 則限動",
+      "note": "用真實生活、拜訪、開會、剪片、AI 工具畫面，讓粉絲看到你每天在做事。"
+    },
+    {
+      "id": "facebook-comment-network",
+      "time": "下午 15 分鐘",
+      "title": "主動互動 10 則",
+      "note": "到夥伴、店家、潛在客戶貼文下真誠留言，不要只按讚。"
+    },
+    {
+      "id": "facebook-message-followup",
+      "time": "晚上 20 分鐘",
+      "title": "回留言與私訊",
+      "note": "把有興趣的人分成 AI、健康、合作、團隊四類，下一步約聊或給資料。"
+    },
+    {
+      "id": "facebook-tomorrow-topic",
+      "time": "睡前 5 分鐘",
+      "title": "準備明天題目",
+      "note": "寫下 1 個短影音開頭、1 個貼文主題、1 個可私訊的邀請句。"
+    }
+  ],
+  "reminders": [
+    {
+      "status": "重要",
+      "title": "語音鬧鐘測試",
+      "note": "請用 Telegram 語音說：提醒我晚上九點要整理發票。成功時手機應收到 ALARM 格式並建立鬧鐘。"
+    },
+    {
+      "status": "注意",
+      "title": "通知權限",
+      "note": "Automate 必須能讀到 Telegram 通知，Telegram 聊天也不能被手機完全靜音。"
+    }
+  ],
+  "deliveries": [
+    {
+      "status": "可用",
+      "title": "成品交付中心",
+      "note": "可先用進行中工作記錄成品狀態，正式版再接資料庫。"
+    },
+    {
+      "status": "可用",
+      "title": "語音橋接服務",
+      "note": "伺服器端本機語音辨識已啟動，後續測手機鬧鐘接收。"
+    }
+  ],
+  "voicePilot": [
+    "已啟動：伺服器本機 faster-whisper 語音辨識。",
+    "已啟動：Telegram 回推通道，辨識後可傳回手機。",
+    "提醒格式：ALARM|21:00|蓋發票。",
+    "下一步：確認 Automate 是否能用通知文字自動設定中文鬧鐘名稱。"
+  ],
+  "commercialization": [
+    {
+      "title": "內測版",
+      "note": "先用 Telegram 與免費 Automate 驗證需求，成本最低。"
+    },
+    {
+      "title": "商品版",
+      "note": "開發自己的 Android 橋接 App，提供語音鬧鐘、任務同步、成品通知與權限控管。"
+    },
+    {
+      "title": "資安規則",
+      "note": "不保存使用者密碼，不外傳內部紀錄，敏感資料只做必要處理。"
+    }
+  ]
+}

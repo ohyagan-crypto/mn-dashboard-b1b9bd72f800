@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>報名後台</title>
+  <style>
+    :root {
+      --blue: #12336b;
+      --green: #2f7d4e;
+      --gold: #b8892f;
+      --red: #b44d5d;
+      --ink: #182230;
+      --muted: #667085;
+      --line: #d9e2ec;
+      --paper: #f2f5f8;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #dfe7ef;
+      color: var(--ink);
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+    .app {
+      width: min(100%, 760px);
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--paper);
+      padding: 18px 14px 30px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 16px 36px rgba(18, 51, 107, .18);
+    }
+    h1 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+    header p {
+      margin: 8px 0 0;
+      color: rgba(255,255,255,.84);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .toolbar a, .toolbar button {
+      width: auto;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.14);
+      color: #fff;
+      padding: 0 12px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 900;
+      font-family: inherit;
+      cursor: pointer;
+      flex: 1 1 calc(50% - 8px);
+      min-width: 0;
+      text-align: center;
+      white-space: normal;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .stat {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .05);
+    }
+    .stat strong {
+      display: block;
+      color: var(--blue);
+      font-size: 31px;
+      line-height: 1;
+    }
+    .stat span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    section {
+      margin-top: 16px;
+    }
+    h2 {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 19px;
+      line-height: 1.3;
+    }
+    .session-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .session, .row, .empty {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, .05);
+    }
+    .session {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .session strong {
+      display: block;
+      color: #1f2a3d;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+    .session span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+    .pill {
+      min-width: 80px;
+      border-radius: 8px;
+      background: #eef8f0;
+      color: var(--green);
+      padding: 10px;
+      text-align: center;
+      font-weight: 900;
+    }
+    .list {
+      display: grid;
+      gap: 9px;
+    }
+    .row {
+      display: grid;
+      gap: 7px;
+    }
+    .row-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .name {
+      color: #172033;
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 900;
+    }
+    .time {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 800;
+      text-align: right;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 800;
+      word-break: break-word;
+    }
+    .empty {
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.5;
+    }
+    @media (min-width: 680px) {
+      .stats { grid-template-columns: repeat(4, 1fr); }
+      .session-grid { grid-template-columns: repeat(3, 1fr); }
+      .toolbar a, .toolbar button { flex: 0 0 auto; }
+    }
+    @media (max-width: 420px) {
+      .session {
+        grid-template-columns: 1fr;
+      }
+      .pill {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1 id="title">報名後台</h1>
+      <p id="subtitle">讀取人數中...</p>
+      <div class="toolbar">
+        <a id="registerLink" href="index.html">前台報名</a>
+        <a id="exportLink" href="#">匯出 CSV</a>
+        <button id="refresh" type="button">重新整理</button>
+        <a href="../">手機助理總覽</a>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><strong id="totalRegistrations">0</strong><span>報名筆數</span></div>
+      <div class="stat"><strong id="totalPeople">0</strong><span>總人數含同行</span></div>
+      <div class="stat"><strong id="sessionCount">0</strong><span>場次數</span></div>
+      <div class="stat"><strong id="updatedAt">--</strong><span>更新時間</span></div>
+    </div>
+
+    <section>
+      <h2>各場次人數</h2>
+      <div class="session-grid" id="sessions"></div>
+    </section>
+
+    <section>
+      <h2>報名名單</h2>
+      <div class="list" id="rows"></div>
+    </section>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const eventId = params.get('event') || 'mini_training_2026';
+    const adminKey = params.get('key') || '';
+
+    const titleEl = document.querySelector('#title');
+    const subtitleEl = document.querySelector('#subtitle');
+    const registerLink = document.querySelector('#registerLink');
+    const exportLink = document.querySelector('#exportLink');
+    const refreshBtn = document.querySelector('#refresh');
+    const totalRegistrationsEl = document.querySelector('#totalRegistrations');
+    const totalPeopleEl = document.querySelector('#totalPeople');
+    const sessionCountEl = document.querySelector('#sessionCount');
+    const updatedAtEl = document.querySelector('#updatedAt');
+    const sessionsEl = document.querySelector('#sessions');
+    const rowsEl = document.querySelector('#rows');
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function formatTime(value) {
+      if (!value) return '';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return String(value);
+      return date.toLocaleString('zh-TW', {
+        timeZone: 'Asia/Taipei',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      });
+    }
+
+    function renderSession(session) {
+      return `
+        <article class="session">
+          <div>
+            <strong>${escapeHtml(session.label)}</strong>
+            <span>${escapeHtml(session.time)}｜${escapeHtml(session.location)}</span>
+          </div>
+          <div class="pill">${Number(session.people) || 0} 人<br />${Number(session.registrations) || 0} 筆</div>
+        </article>
+      `;
+    }
+
+    function renderRow(row) {
+      const details = [
+        `場次：${row.sessionLabel || ''}`,
+        row.phone ? `手機：${row.phone}` : '',
+        row.lineId ? `LINE：${row.lineId}` : '',
+        row.referrer ? `介紹人：${row.referrer}` : '',
+        row.team ? `團隊：${row.team}` : '',
+        Number(row.companions) ? `同行：${Number(row.companions)}` : '',
+        row.firstTime ? `第一次：${row.firstTime}` : '',
+        row.note ? `備註：${row.note}` : ''
+      ].filter(Boolean).join('｜');
+
+      return `
+        <article class="row">
+          <div class="row-head">
+            <div class="name">${escapeHtml(row.name)}</div>
+            <div class="time">${escapeHtml(formatTime(row.createdAt))}</div>
+          </div>
+          <div class="meta">${escapeHtml(details)}</div>
+        </article>
+      `;
+    }
+
+    async function loadAdmin() {
+      refreshBtn.disabled = true;
+      try {
+        const response = await fetch(`../api/admin/${encodeURIComponent(eventId)}?key=${encodeURIComponent(adminKey)}`, { cache: 'no-store' });
+        const data = await response.json();
+        if (!response.ok || !data.ok) throw new Error(data.error || '讀取失敗');
+        titleEl.textContent = data.event.title;
+        subtitleEl.textContent = `${data.event.subtitle || ''}｜報名後台`;
+        registerLink.href = `register.html?event=${encodeURIComponent(eventId)}`;
+        exportLink.href = `../api/export/${encodeURIComponent(eventId)}?key=${encodeURIComponent(adminKey)}`;
+        totalRegistrationsEl.textContent = data.totalRegistrations;
+        totalPeopleEl.textContent = data.totalPeople;
+        sessionCountEl.textContent = data.sessions.length;
+        updatedAtEl.textContent = new Date().toLocaleTimeString('zh-TW', {
+          timeZone: 'Asia/Taipei',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false
+        });
+        sessionsEl.innerHTML = data.sessions.map(renderSession).join('');
+        rowsEl.innerHTML = data.rows.length
+          ? data.rows.map(renderRow).join('')
+          : '<div class="empty">目前尚無報名資料。</div>';
+      } catch (error) {
+        titleEl.textContent = '後台讀取失敗';
+        subtitleEl.textContent = error.message || '請稍後重新整理。';
+        sessionsEl.innerHTML = '';
+        rowsEl.innerHTML = '<div class="empty">目前無法讀取報名資料。</div>';
+      } finally {
+        refreshBtn.disabled = false;
+      }
+    }
+
+    refreshBtn.addEventListener('click', loadAdmin);
+    loadAdmin();
+  </script>
+</body>
+</html>

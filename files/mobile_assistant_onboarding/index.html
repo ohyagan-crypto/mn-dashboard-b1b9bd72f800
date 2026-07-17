@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>手機助理需求問卷</title>
+  <meta name="theme-color" content="#1f7fd1" />
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #102a43;
+      --muted: #5b7086;
+      --paper: #f4f9fd;
+      --card: #ffffff;
+      --line: #d7e8f3;
+      --blue: #2078c8;
+      --sky: #54b6df;
+      --green: #31a879;
+      --gold: #f1b443;
+      --rose: #d85f86;
+      --purple: #7667d8;
+      --shadow: 0 14px 32px rgba(30, 87, 134, .12);
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(180deg, #ebf7ff 0%, #f9fcff 58%, #edf7f3 100%);
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+    .app {
+      width: min(100%, 520px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 12px 12px 28px;
+    }
+    .hero,
+    .panel,
+    .result-card,
+    .summary-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .95);
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 104px;
+      gap: 10px;
+      align-items: center;
+      padding: 14px;
+      background: linear-gradient(135deg, #ffffff 0%, #eaf8ff 48%, #effbf4 100%);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 9px;
+      border-radius: 8px;
+      color: #176748;
+      background: #eafaf2;
+      border: 1px solid #c6edd8;
+      font-size: 13px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    h1 {
+      margin: 9px 0 0;
+      font-size: 29px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    .hero p,
+    .panel p,
+    .result-card p,
+    .summary-box p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 800;
+    }
+    .mascot {
+      width: 104px;
+      height: 126px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 12px 26px rgba(31, 127, 209, .14);
+    }
+    .top-actions,
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .button {
+      min-height: 44px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      padding: 8px 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--ink);
+      background: #fff;
+      text-decoration: none;
+      font: inherit;
+      font-size: 15px;
+      line-height: 1.2;
+      font-weight: 900;
+      cursor: pointer;
+      overflow-wrap: anywhere;
+    }
+    .button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 12px 24px rgba(31, 127, 209, .18);
+    }
+    .button.secondary {
+      color: var(--blue);
+      border-color: #c7dfed;
+      background: #f7fcff;
+    }
+    .button.gold {
+      color: #173a54;
+      background: linear-gradient(135deg, #f7c65f, #f0b642);
+    }
+    .panel {
+      margin-top: 12px;
+      padding: 14px;
+    }
+    .panel-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .panel-title h2 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.2;
+    }
+    .step-pill {
+      min-height: 28px;
+      padding: 0 8px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      color: #236ec8;
+      background: #ecf6ff;
+      border: 1px solid #cfe7f8;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    form {
+      display: grid;
+      gap: 12px;
+    }
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+    label,
+    legend {
+      color: #1f3b57;
+      font-size: 15px;
+      line-height: 1.3;
+      font-weight: 900;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid #cfe0eb;
+      border-radius: 8px;
+      padding: 10px 11px;
+      color: var(--ink);
+      background: #fbfdff;
+      font: inherit;
+      font-size: 15px;
+      line-height: 1.35;
+      outline: none;
+    }
+    textarea {
+      min-height: 88px;
+      resize: vertical;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(32, 120, 200, .13);
+    }
+    fieldset {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      display: grid;
+      gap: 8px;
+    }
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .choice {
+      position: relative;
+      min-height: 48px;
+      border: 1px solid #d7e8f3;
+      border-radius: 8px;
+      background: #fff;
+      display: grid;
+      align-items: center;
+      padding: 8px 10px 8px 34px;
+      color: #23445f;
+      font-size: 14px;
+      line-height: 1.25;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .choice input {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      min-height: 16px;
+      transform: translateY(-50%);
+      accent-color: var(--green);
+    }
+    .choice:has(input:checked) {
+      border-color: #8fd9b4;
+      background: #f0fff6;
+      box-shadow: 0 8px 18px rgba(49, 168, 121, .1);
+    }
+    .result {
+      display: none;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .result.is-visible {
+      display: grid;
+    }
+    .result-hero {
+      padding: 15px;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(135deg, #1f7fd1, #31a879);
+      box-shadow: var(--shadow);
+    }
+    .result-hero h2 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.18;
+    }
+    .result-hero p {
+      color: rgba(255,255,255,.88);
+      margin-top: 7px;
+    }
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .result-card {
+      padding: 13px;
+      min-height: 112px;
+      box-shadow: 0 10px 24px rgba(30, 87, 134, .08);
+    }
+    .result-card.wide {
+      grid-column: 1 / -1;
+    }
+    .result-card strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+    .tag-row,
+    .mini-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+    }
+    .tag {
+      min-height: 28px;
+      padding: 6px 9px;
+      border-radius: 8px;
+      color: #1f3b57;
+      background: #f2f8fc;
+      border: 1px solid #d7e8f3;
+      font-size: 13px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    .tag.green { color: #176748; background: #effcf5; border-color: #bfe8d2; }
+    .tag.gold { color: #7a4b00; background: #fff8df; border-color: #f3dc99; }
+    .tag.rose { color: #9b2f56; background: #fff4f8; border-color: #f0bfd0; }
+    .tag.blue { color: #236ec8; background: #edf7ff; border-color: #c8e6f8; }
+    .summary-box {
+      padding: 14px;
+      box-shadow: 0 10px 24px rgba(30, 87, 134, .08);
+    }
+    .summary-text {
+      width: 100%;
+      min-height: 210px;
+      margin-top: 10px;
+      white-space: pre-wrap;
+      color: #18324b;
+      background: #f8fbfd;
+      border: 1px solid #d7e8f3;
+      border-radius: 8px;
+      padding: 11px;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 800;
+      overflow: auto;
+    }
+    .status {
+      min-height: 20px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+    @media (max-width: 430px) {
+      .app { padding: 10px 8px 24px; }
+      .hero { grid-template-columns: minmax(0, 1fr) 92px; padding: 12px; }
+      .mascot { width: 92px; height: 114px; }
+      h1 { font-size: 25px; }
+      .choice-grid,
+      .result-grid,
+      .top-actions,
+      .actions { grid-template-columns: 1fr; }
+      .panel { padding: 12px; }
+      .result-card { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">手機助理需求問卷</span>
+        <h1>先了解需求，再產生專屬助理</h1>
+        <p>填完後會直接產生一版適合使用者的手機助理首頁架構、AI 分工與每日流程。</p>
+      </div>
+      <img class="mascot" src="/mn-dashboard-b1b9bd72f800/assets/icons/mobile-assistant-hero.png" alt="手機助理娃娃" />
+    </section>
+
+    <div class="top-actions">
+      <a class="button secondary" href="/mn-dashboard-b1b9bd72f800/">回手機助理</a>
+      <button class="button gold" type="button" id="loadSample">套用範例</button>
+    </div>
+
+    <section class="panel" id="surveyPanel">
+      <div class="panel-title">
+        <h2>使用前調查</h2>
+        <span class="step-pill">8 個重點</span>
+      </div>
+      <form id="surveyForm">
+        <div class="field">
+          <label for="userName">使用者名稱或稱呼</label>
+          <input id="userName" name="userName" autocomplete="name" placeholder="例如：王姐、Jason、雅婷店長" required />
+        </div>
+
+        <div class="field">
+          <label for="role">目前主要身分</label>
+          <select id="role" name="role" required>
+            <option value="">請選擇</option>
+            <option>企業老闆 / 經營者</option>
+            <option>團隊領導 / 主管</option>
+            <option>業務 / 經銷商</option>
+            <option>美容健康店家</option>
+            <option>課程講師 / 顧問</option>
+            <option>內容創作者</option>
+            <option>行政 / 專案工作者</option>
+            <option>個人效率提升</option>
+            <option>其他</option>
+          </select>
+        </div>
+
+        <fieldset>
+          <legend>最想讓 AI 幫忙的目標</legend>
+          <div class="choice-grid" data-limit="5">
+            <label class="choice"><input type="checkbox" name="goals" value="提升效率" />提升效率</label>
+            <label class="choice"><input type="checkbox" name="goals" value="增加收入" />增加收入</label>
+            <label class="choice"><input type="checkbox" name="goals" value="客戶開發" />客戶開發</label>
+            <label class="choice"><input type="checkbox" name="goals" value="網站經營" />網站經營</label>
+            <label class="choice"><input type="checkbox" name="goals" value="短影音內容" />短影音內容</label>
+            <label class="choice"><input type="checkbox" name="goals" value="課程製作" />課程製作</label>
+            <label class="choice"><input type="checkbox" name="goals" value="團隊管理" />團隊管理</label>
+            <label class="choice"><input type="checkbox" name="goals" value="資料整理" />資料整理</label>
+            <label class="choice"><input type="checkbox" name="goals" value="提醒代辦" />提醒代辦</label>
+            <label class="choice"><input type="checkbox" name="goals" value="天馬行空創造" />天馬行空創造</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>目前常用工具</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="tools" value="Telegram" />Telegram</label>
+            <label class="choice"><input type="checkbox" name="tools" value="LINE" />LINE</label>
+            <label class="choice"><input type="checkbox" name="tools" value="Facebook" />Facebook</label>
+            <label class="choice"><input type="checkbox" name="tools" value="Instagram" />Instagram</label>
+            <label class="choice"><input type="checkbox" name="tools" value="網站後台" />網站後台</label>
+            <label class="choice"><input type="checkbox" name="tools" value="Excel" />Excel</label>
+            <label class="choice"><input type="checkbox" name="tools" value="Google Drive" />Google Drive</label>
+            <label class="choice"><input type="checkbox" name="tools" value="Canva / 剪輯工具" />Canva / 剪輯工具</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="tasks">每天最想交給 AI 的工作</label>
+          <textarea id="tasks" name="tasks" placeholder="例如：整理客戶名單、寫貼文、做課程大綱、追蹤代辦、更新網站"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="bottlenecks">目前最卡或最浪費時間的地方</label>
+          <textarea id="bottlenecks" name="bottlenecks" placeholder="例如：資料太散、想法很多但無法整理、內容產出不穩定、客戶追蹤容易漏"></textarea>
+        </div>
+
+        <fieldset>
+          <legend>可接受的 AI 自動化程度</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="automation" value="只整理建議" required />只整理建議</label>
+            <label class="choice"><input type="radio" name="automation" value="先做草稿" />先做草稿</label>
+            <label class="choice"><input type="radio" name="automation" value="確認後執行" />確認後執行</label>
+            <label class="choice"><input type="radio" name="automation" value="可半自動化" />可半自動化</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>偏好的回覆方式</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="replyStyle" value="簡短直接" required />簡短直接</label>
+            <label class="choice"><input type="radio" name="replyStyle" value="顧問式分析" />顧問式分析</label>
+            <label class="choice"><input type="radio" name="replyStyle" value="一步一步教學" />一步一步教學</label>
+            <label class="choice"><input type="radio" name="replyStyle" value="直接幫我完成" />直接幫我完成</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>資料安全偏好</legend>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="privacy" value="一般資料即可整理" required />一般資料即可整理</label>
+            <label class="choice"><input type="radio" name="privacy" value="客戶資料要先確認" />客戶資料要先確認</label>
+            <label class="choice"><input type="radio" name="privacy" value="帳號權限都要人工確認" />帳號權限都要人工確認</label>
+            <label class="choice"><input type="radio" name="privacy" value="只做本機與聊天室整理" />只做本機與聊天室整理</label>
+          </div>
+        </fieldset>
+
+        <button class="button primary" type="submit">產生我的手機助理</button>
+        <div class="status" id="formStatus"></div>
+      </form>
+    </section>
+
+    <section class="result" id="result">
+      <div class="result-hero">
+        <h2 id="resultTitle">專屬手機助理</h2>
+        <p id="resultSubtitle">依照問卷產生首頁架構與 AI 分工。</p>
+        <div class="tag-row" id="resultTags"></div>
+      </div>
+
+      <div class="result-grid" id="resultGrid"></div>
+
+      <div class="summary-box">
+        <strong>交接摘要</strong>
+        <p>可直接貼給 Codex、OpenClaw、ChatGPT 或真人助理，做下一版設定。</p>
+        <div class="summary-text" id="summaryText"></div>
+        <div class="actions">
+          <button class="button primary" type="button" id="copySummary">複製摘要</button>
+          <button class="button secondary" type="button" id="downloadSummary">下載文字檔</button>
+          <a class="button secondary" href="https://t.me/mann01491_bot" target="_blank" rel="noopener">找森助理</a>
+          <a class="button secondary" href="https://t.me/mann02706_bot" target="_blank" rel="noopener">找曜助理</a>
+        </div>
+        <div class="status" id="copyStatus"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('surveyForm');
+    const result = document.getElementById('result');
+    const statusEl = document.getElementById('formStatus');
+    const copyStatus = document.getElementById('copyStatus');
+    const storageKey = 'mobileAssistantOnboarding:lastResult';
+
+    function getChecked(name) {
+      return Array.from(document.querySelectorAll(`[name="${name}"]:checked`)).map((item) => item.value);
+    }
+
+    function getValue(name) {
+      const item = document.querySelector(`[name="${name}"]:checked`) || document.querySelector(`[name="${name}"]`);
+      return item ? String(item.value || '').trim() : '';
+    }
+
+    function splitTasks(text) {
+      return String(text || '')
+        .split(/[，,、\n]/)
+        .map((item) => item.trim())
+        .filter(Boolean)
+        .slice(0, 6);
+    }
+
+    function unique(items) {
+      return Array.from(new Set(items.filter(Boolean)));
+    }
+
+    function pickFocus(goals, role) {
+      const base = [];
+      if (goals.includes('客戶開發') || goals.includes('增加收入')) base.push('名單開發與追蹤');
+      if (goals.includes('網站經營')) base.push('網站內容與成交動線');
+      if (goals.includes('短影音內容')) base.push('短影音腳本與剪輯');
+      if (goals.includes('課程製作')) base.push('課程設計與教材');
+      if (goals.includes('團隊管理') || role.includes('團隊')) base.push('團隊進程與夥伴輔導');
+      if (goals.includes('資料整理')) base.push('資料庫與知識庫');
+      if (goals.includes('提醒代辦')) base.push('代辦提醒與目標推進');
+      if (goals.includes('天馬行空創造')) base.push('創意實驗與新專案');
+      if (!base.length) base.push('每日任務整理', '資料查找', '回覆草稿');
+      return base.slice(0, 5);
+    }
+
+    function buildButtons(focus, tools) {
+      const buttons = [];
+      focus.forEach((item) => {
+        if (item.includes('名單')) buttons.push('名單追蹤');
+        if (item.includes('網站')) buttons.push('網站更新');
+        if (item.includes('短影音')) buttons.push('短影音');
+        if (item.includes('課程')) buttons.push('課程教材');
+        if (item.includes('團隊')) buttons.push('團隊進度');
+        if (item.includes('資料')) buttons.push('資料庫');
+        if (item.includes('代辦')) buttons.push('代辦提醒');
+        if (item.includes('創意')) buttons.push('天馬行空');
+      });
+      if (tools.includes('LINE')) buttons.push('LINE 話術');
+      if (tools.includes('Facebook')) buttons.push('臉書發文');
+      if (tools.includes('Excel')) buttons.push('表格整理');
+      return unique(buttons).slice(0, 8);
+    }
+
+    function buildSkills(focus, tools) {
+      const skills = [];
+      if (focus.some((item) => item.includes('名單'))) skills.push('客戶名單開發與引導技能');
+      if (focus.some((item) => item.includes('網站'))) skills.push('網站經營與更新技能');
+      if (focus.some((item) => item.includes('短影音'))) skills.push('短影音企劃剪輯技能');
+      if (focus.some((item) => item.includes('課程'))) skills.push('課程設計與教材產出技能');
+      if (focus.some((item) => item.includes('團隊'))) skills.push('團隊進程與夥伴輔導技能');
+      if (focus.some((item) => item.includes('資料'))) skills.push('知識庫整理與搜尋技能');
+      if (tools.includes('Facebook')) skills.push('臉書人設與發文節奏技能');
+      if (tools.includes('LINE')) skills.push('LINE 跟進話術與分類技能');
+      if (!skills.length) skills.push('每日任務整理技能', '個人目標追蹤技能');
+      return unique(skills).slice(0, 6);
+    }
+
+    function buildAiSplit(data, focus) {
+      const items = [
+        ['手機助理', '每日入口、提醒、代辦、常用連結、狀態追蹤。'],
+        ['ChatGPT', '快速討論、文案草稿、教學拆解、想法整理。'],
+        ['Codex', '網站、表格、資料整理、工具頁與自動化流程製作。'],
+        ['OpenClaw', '跨工具操作、資料搬運、頁面檢查、重複流程協助。']
+      ];
+      if (data.automation === '只整理建議') items[0][1] = '先做建議與摘要，不直接操作帳號或資料。';
+      if (data.automation === '可半自動化') items[3][1] = '可處理重複性操作，但發布、付款、刪除仍要人工確認。';
+      return items;
+    }
+
+    function buildDailyFlow(focus) {
+      const morning = focus.includes('代辦提醒與目標推進') ? '早上先看今日目標、重要代辦與提醒。' : '早上先看今日三件最重要的事。';
+      const noon = focus.some((item) => item.includes('名單') || item.includes('網站') || item.includes('短影音')) ? '白天集中處理客戶、內容、網站或成交素材。' : '白天集中處理資料、文件與需要 AI 協助的任務。';
+      const night = focus.some((item) => item.includes('團隊')) ? '晚上回顧團隊進度、夥伴輔導與明日安排。' : '晚上回顧完成項目，整理明天要推進的工作。';
+      return [morning, noon, night];
+    }
+
+    function createCard(title, lines, tone = 'blue', wide = false) {
+      const tags = lines.map((line) => `<span class="tag ${tone}">${escapeHtml(line)}</span>`).join('');
+      return `<article class="result-card${wide ? ' wide' : ''}"><strong>${escapeHtml(title)}</strong><div class="mini-list">${tags}</div></article>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function buildSummary(data, focus, buttons, skills, flow) {
+      return [
+        `手機助理需求摘要`,
+        ``,
+        `使用者：${data.userName}`,
+        `身分：${data.role}`,
+        `主要目標：${data.goals.join('、') || '未填'}`,
+        `常用工具：${data.tools.join('、') || '未填'}`,
+        `想交給 AI 的工作：${data.tasks || '未填'}`,
+        `目前卡點：${data.bottlenecks || '未填'}`,
+        `自動化程度：${data.automation}`,
+        `回覆方式：${data.replyStyle}`,
+        `資料安全：${data.privacy}`,
+        ``,
+        `建議首頁焦點：${focus.join('、')}`,
+        `建議首頁按鈕：${buttons.join('、')}`,
+        `需要建立技能：${skills.join('、')}`,
+        ``,
+        `每日流程：`,
+        `1. ${flow[0]}`,
+        `2. ${flow[1]}`,
+        `3. ${flow[2]}`,
+        ``,
+        `安全規則：重要發布、付款、刪除、帳號權限與敏感客戶資料，都要先由本人確認。`
+      ].join('\n');
+    }
+
+    function renderResult(data) {
+      const focus = pickFocus(data.goals, data.role);
+      const buttons = buildButtons(focus, data.tools);
+      const skills = buildSkills(focus, data.tools);
+      const flow = buildDailyFlow(focus);
+      const aiSplit = buildAiSplit(data, focus);
+      const tasks = splitTasks(data.tasks);
+      const summary = buildSummary(data, focus, buttons, skills, flow);
+
+      document.getElementById('resultTitle').textContent = `${data.userName}的手機助理`;
+      document.getElementById('resultSubtitle').textContent = `${data.role}｜${data.replyStyle}｜${data.automation}`;
+      document.getElementById('resultTags').innerHTML = data.goals.slice(0, 5).map((item) => `<span class="tag gold">${escapeHtml(item)}</span>`).join('');
+
+      const splitText = aiSplit.map((item) => `${item[0]}：${item[1]}`);
+      const grid = [
+        createCard('第一屏重點', focus, 'green', true),
+        createCard('首頁按鈕', buttons, 'blue', true),
+        createCard('先處理任務', tasks.length ? tasks : focus.slice(0, 4), 'gold'),
+        createCard('需要技能', skills.slice(0, 4), 'rose'),
+        createCard('每日流程', flow, 'green', true),
+        createCard('AI 分工', splitText, 'blue', true),
+        createCard('安全規則', [data.privacy, '發布 / 付款 / 刪除前先確認', '不把密碼寫進頁面'], 'rose', true)
+      ];
+      document.getElementById('resultGrid').innerHTML = grid.join('');
+      document.getElementById('summaryText').textContent = summary;
+      result.classList.add('is-visible');
+      localStorage.setItem(storageKey, JSON.stringify(data));
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = {
+        userName: String(document.getElementById('userName').value || '').trim(),
+        role: String(document.getElementById('role').value || '').trim(),
+        goals: getChecked('goals'),
+        tools: getChecked('tools'),
+        tasks: String(document.getElementById('tasks').value || '').trim(),
+        bottlenecks: String(document.getElementById('bottlenecks').value || '').trim(),
+        automation: getValue('automation'),
+        replyStyle: getValue('replyStyle'),
+        privacy: getValue('privacy')
+      };
+      if (!data.userName || !data.role || !data.goals.length || !data.automation || !data.replyStyle || !data.privacy) {
+        statusEl.textContent = '請至少填寫名稱、身分、目標、自動化程度、回覆方式與安全偏好。';
+        return;
+      }
+      statusEl.textContent = '已產生專屬手機助理架構。';
+      renderResult(data);
+    });
+
+    document.getElementById('copySummary').addEventListener('click', async () => {
+      const text = document.getElementById('summaryText').textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        copyStatus.textContent = '已複製，可直接貼到聊天室。';
+      } catch {
+        copyStatus.textContent = '複製失敗，請長按摘要文字手動複製。';
+      }
+    });
+
+    document.getElementById('downloadSummary').addEventListener('click', () => {
+      const text = document.getElementById('summaryText').textContent;
+      const name = String(document.getElementById('userName').value || 'assistant').trim().replace(/[\\/:*?"<>|\\s]+/g, '_');
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${name}_mobile_assistant_plan.txt`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('loadSample').addEventListener('click', () => {
+      document.getElementById('userName').value = '示範使用者';
+      document.getElementById('role').value = '團隊領導 / 主管';
+      ['提升效率', '客戶開發', '短影音內容', '團隊管理', '資料整理'].forEach((value) => {
+        const input = document.querySelector(`[name="goals"][value="${value}"]`);
+        if (input) input.checked = true;
+      });
+      ['Telegram', 'LINE', 'Facebook', 'Excel'].forEach((value) => {
+        const input = document.querySelector(`[name="tools"][value="${value}"]`);
+        if (input) input.checked = true;
+      });
+      document.getElementById('tasks').value = '整理名單、安排代辦、寫臉書貼文、輔導夥伴、製作課程內容';
+      document.getElementById('bottlenecks').value = '事情太多，資料分散，追蹤容易漏，內容產出不穩定';
+      document.querySelector('[name="automation"][value="確認後執行"]').checked = true;
+      document.querySelector('[name="replyStyle"][value="顧問式分析"]').checked = true;
+      document.querySelector('[name="privacy"][value="客戶資料要先確認"]').checked = true;
+      statusEl.textContent = '已套用範例，可直接按產生。';
+    });
+
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+      if (saved && saved.userName) renderResult(saved);
+    } catch {}
+  </script>
+</body>
+</html>

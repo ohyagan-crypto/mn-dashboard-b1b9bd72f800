@@ -1,0 +1,24 @@
+{
+  "name": "微新手機助理總覽",
+  "short_name": "手機助理",
+  "description": "微新手機助理的手機桌面入口，集中管理第二階段工作台、專案、提醒、待辦、報名、股票呈報、成品交付與常用指令。",
+  "start_url": "/mn-dashboard-b1b9bd72f800/",
+  "scope": "/mn-dashboard-b1b9bd72f800/",
+  "display": "standalone",
+  "background_color": "#f5f9fd",
+  "theme_color": "#1f7fd1",
+  "icons": [
+    {
+      "src": "assets/icons/mobile-assistant-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/mobile-assistant-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
