@@ -1,315 +1,282 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#071223">
-<meta name="description" content="TG1、TG2、TG3 工作流與技能總覽">
-<title>TG123 工作流中控台</title>
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TG1、TG2、TG3 即時任務、工作流、技能與安全控制整合中控台">
+  <title>TG123 AI 自動化中控台｜任務・工作流・技能</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css?v=20260717-merged-dashboard">
 </head>
-<body>
-<main class="shell">
-<header class="topbar">
-<div class="brand">
-<span class="brand-mark">TG</span>
-<div>TG123 工作流中控台<small>技能、工作流與交付標準</small>
-</div>
-</div>
-<nav>
-<a href="#bots">三端分工</a>
-<a href="#workflows">工作流</a>
-<a href="#skills">技能庫</a>
-<a href="#rules">執行標準</a>
-</nav>
-</header>
-<section class="hero" id="overview">
-<div class="hero-copy">
-<div class="eyebrow">Owner AI Operations System</div>
-<h1>把所有任務交給<br>
-<span class="gradient">TG1・TG2・TG3</span>
-</h1>
-<p>三個 Telegram 助理共用完整技能與長期工作記憶，負責需求拆解、設計、執行、驗證、修正與同源交付。主人只需要提出目標，最後驗收成果。</p>
-<div class="hero-actions">
-<a class="button primary" href="#skills">查看全部技能</a>
-<a class="button secondary" href="#commands">常用任務指令</a>
-</div>
-</div>
-<aside class="hero-console">
-<div class="console-head">
-<span class="dot">
-</span>
-<span class="dot">
-</span>
-<span class="dot">
-</span>
-<span class="console-title">同步狀態</span>
-</div>
-<div class="console-lines">
-<div class="console-line">
-<i>
-</i>
-<b>TG1</b>
-<span>READY</span>
-</div>
-<div class="console-line">
-<i>
-</i>
-<b>TG2</b>
-<span>READY</span>
-</div>
-<div class="console-line">
-<i>
-</i>
-<b>TG3</b>
-<span>READY</span>
-</div>
-<div class="console-line">
-<i>
-</i>
-<b>技能索引</b>
-<span>SYNCED</span>
-</div>
-<div class="console-line">
-<i>
-</i>
-<b>工作記憶</b>
-<span>337</span>
-</div>
-<div class="console-line">
-<i>
-</i>
-<b>交付規則</b>
-<span>SAME ORIGIN</span>
-</div>
-</div>
-</aside>
-</section>
-<div class="stats">
-<div class="stat">
-<strong>3</strong>
-<span>Telegram 專屬助理</span>
-</div>
-<div class="stat">
-<strong>169</strong>
-<span>每端技能安裝項目</span>
-</div>
-<div class="stat">
-<strong>61</strong>
-<span>去重後獨立技能</span>
-</div>
-<div class="stat">
-<strong>337</strong>
-<span>長期工作記憶</span>
-</div>
-</div>
-<section id="bots">
-<div class="section-head">
-<div>
-<div class="eyebrow">Three Assistants</div>
-<h2>三端協作分工</h2>
-</div>
-<p>三端技能庫已同步，任何一端都能執行完整工作流；以下以主要使用情境區分，檔案只由收到任務的原 Bot 回傳。</p>
-</div>
-<div class="bot-grid">
-<article class="bot-card" data-bot="1">
-<div class="bot-no">TG1・營運執行</div>
-<h3>客服、帳務與系統</h3>
-<p>處理藍星客服、LINE 官方、權限案件、排程檢查、網站維護、資料核對、日常營運與完成通知。</p>
-<div class="tag-row">
-<span class="tag">客服自動化</span>
-<span class="tag">權限案件</span>
-<span class="tag">網站部署</span>
-<span class="tag">排程維護</span>
-</div>
-</article>
-<article class="bot-card" data-bot="2">
-<div class="bot-no">TG2・內容製作</div>
-<h3>圖片、音訊與媒體</h3>
-<p>處理藍星做圖、教學海報、語音、轉錄、PDF、NotebookLM、短影音與多媒體成品交付。</p>
-<div class="tag-row">
-<span class="tag">繁中海報</span>
-<span class="tag">語音配音</span>
-<span class="tag">影音摘要</span>
-<span class="tag">文件轉換</span>
-</div>
-</article>
-<article class="bot-card" data-bot="3">
-<div class="bot-no">TG3・專案中控</div>
-<h3>開發、HFSW 與大型任務</h3>
-<p>處理程式開發、網站復刻、公開部署、HFSW 長影片、多代理工作、瀏覽器操作與跨流程整合。</p>
-<div class="tag-row">
-<span class="tag">大型開發</span>
-<span class="tag">HFSW</span>
-<span class="tag">公開部署</span>
-<span class="tag">多代理協作</span>
-</div>
-</article>
-</div>
-</section>
-<section id="workflows">
-<div class="section-head">
-<div>
-<div class="eyebrow">Workflow Map</div>
-<h2>所有主要工作流</h2>
-</div>
-<p>從一句需求開始，自動選擇最小正確流程。需要付費、帳號驗證或必要素材時才會詢問，其餘設計與執行由助理完成。</p>
-</div>
-<div class="flow-grid">
-<article class="flow-card">
-<div class="flow-icon">影</div>
-<h3>長短影音製作</h3>
-<p>HFSW、SD／SDF／SDV、Dreamina、Seedance、ANS、ACS、ACS2、自動剪短影音。</p>
-</article>
-<article class="flow-card">
-<div class="flow-icon">圖</div>
-<h3>圖片與海報</h3>
-<p>藍星做圖、IMS、教學步驟圖、人物一致性、海報修版、原圖下載與文件交付。</p>
-</article>
-<article class="flow-card">
-<div class="flow-icon">聲</div>
-<h3>語音與轉錄</h3>
-<p>Speech 配音、Transcribe 轉錄、字幕對齊、音訊驗證與手機外放檢查。</p>
-</article>
-<article class="flow-card">
-<div class="flow-icon">N</div>
-<h3>NotebookLM / NBS</h3>
-<p>來源整理、摘要、音訊、簡報、影片與多成品驗證交付。</p>
-</article>
-<article class="flow-card">
-<div class="flow-icon">網</div>
-<h3>網站與公開部署</h3>
-<p>WBS、GitHub Pages、課程網站更新、網站復刻與公開網址檢查。</p>
-</article>
-<article class="flow-card">
-<div class="flow-icon">程</div>
-<h3>Codex 程式開發</h3>
-<p>大型前後端、API 中轉、資料庫、測試、Git、程式審查與技能開發。</p>
-</article>
-<article class="flow-card">
-<div class="flow-icon">研</div>
-<h3>研究與資料分析</h3>
-<p>幣安 Coin、影片逐格、網頁資料、股票資訊與來源核對。</p>
-</article>
-<article class="flow-card">
-<div class="flow-icon">營</div>
-<h3>客服與營運自動化</h3>
-<p>Telegram、LINE 客服、登入操作、每日升級與工作記憶管理。</p>
-</article>
-</div>
-</section>
-<section id="skills">
-<div class="section-head">
-<div>
-<div class="eyebrow">61 Unique Skills</div>
-<h2>完整技能庫</h2>
-</div>
-<p>已將 169 個安裝項目中的歷史備份與重複版本合併，以下列出目前 61 個獨立技能。可依名稱、用途或分類搜尋。</p>
-</div>
-<div class="catalog">
-<div class="toolbar">
-<input class="search" id="skillSearch" type="search" placeholder="搜尋技能，例如：hfsw、做圖、網站、語音、Telegram">
-<div class="filters" id="filters">
-</div>
-</div>
-<div class="skill-grid" id="skillGrid">
-</div>
-<div class="empty" id="empty">找不到符合的技能。</div>
-</div>
-</section>
-<section id="rules">
-<div class="section-head">
-<div>
-<div class="eyebrow">Closed Loop</div>
-<h2>執行與交付標準</h2>
-</div>
-<p>不把開始、排隊、生成中或已下載當成完成；每個工作流都必須走到可驗收成果或明確外部卡點。</p>
-</div>
-<div class="rules">
-<article class="rule">
-<strong>1</strong>
-<div>
-<h3>最新指令優先</h3>
-<p>新任務不混入舊素材、舊角色、舊瀏覽器狀態或不存在的素材編號。</p>
-</div>
-</article>
-<article class="rule">
-<strong>2</strong>
-<div>
-<h3>助理負責設計與執行</h3>
-<p>主人只負責最後驗收；需求拆解、風格、製作、檢查與修正由助理完成。</p>
-</div>
-</article>
-<article class="rule">
-<strong>3</strong>
-<div>
-<h3>封閉循環驗證</h3>
-<p>讀取真實狀態 → 執行一步 → 驗證結果 → 保存進度 → 修正或繼續 → 最終交付。</p>
-</div>
-</article>
-<article class="rule">
-<strong>4</strong>
-<div>
-<h3>只修失敗環節</h3>
-<p>先檢查現有成果與任務狀態，避免整套盲目重做；重複失敗時先找根因。</p>
-</div>
-</article>
-<article class="rule">
-<strong>5</strong>
-<div>
-<h3>同源 Bot 回傳</h3>
-<p>TG1 任務由 TG1 回傳、TG2 由 TG2 回傳、TG3 由 TG3 回傳。</p>
-</div>
-</article>
-<article class="rule">
-<strong>6</strong>
-<div>
-<h3>成品驗證後才完成</h3>
-<p>檔案需存在且可讀；網站需確認公開網址已更新，成品規格必須符合要求。</p>
-</div>
-</article>
-</div>
-</section>
-<section id="commands">
-<div class="section-head">
-<div>
-<div class="eyebrow">Quick Start</div>
-<h2>常用任務指令</h2>
-</div>
-<p>點擊即可複製，再貼到收到任務的 TG 助理；系統會依內容自動選擇技能。</p>
-</div>
-<div class="commands">
-<button class="command" data-copy="hfsw 製作 5 分鐘 9:16 繁體中文教學影片，完成後回傳成品">
-<code>hfsw 製作教學影片</code>
-<span>長影片、口述、字幕、配樂與驗證</span>
-</button>
-<button class="command" data-copy="把這份文案做成 9:16 繁體中文科技海報">
-<code>做繁中科技海報</code>
-<span>藍星生成、原圖下載與交付</span>
-</button>
-<button class="command" data-copy="把這個網站完整復刻並公開部署，桌機手機都要驗證">
-<code>復刻網站並部署</code>
-<span>真實網站、GitHub Pages 與公開驗證</span>
-</button>
-<button class="command" data-copy="把這支長影片剪成 3 支 9:16 短影音">
-<code>長影片剪 3 支短影音</code>
-<span>轉錄、找亮點、字幕與輸出</span>
-</button>
-<button class="command" data-copy="用 NBS 把這份資料做成摘要、MP3 音訊與簡報">
-<code>NBS 多成品摘要</code>
-<span>音訊、簡報與逐項驗證</span>
-</button>
-<button class="command" data-copy="檢查 TG1、TG2、TG3 的真實狀態並修復異常">
-<code>檢查 TG123 狀態</code>
-<span>程序、心跳與請求狀態核對</span>
-</button>
-</div>
-</section>
-<footer class="footer">TG123 工作流中控台・資料更新：2026 年 7 月 17 日・公開頁面不包含本機路徑、憑證或敏感資料</footer>
-</main>
-<div class="toast" id="toast">已複製指令</div>
-<script src="skills.js">
-</script>
+<body data-agent-view="shami">
+  <div class="agent-view-switch page-agent-switch" role="tablist" aria-label="蝦咩、林孟姿與嵐熙切換">
+    <button type="button" class="active" data-agent-view-button="shami" role="tab" aria-selected="true" aria-pressed="true">
+      <img src="assets/shami-avatar.png" alt="" aria-hidden="true">
+      <small>TG1</small>
+      <b>蝦咩</b>
+    </button>
+    <button type="button" data-agent-view-button="mengzi" role="tab" aria-selected="false" aria-pressed="false">
+      <img src="assets/mengzi-avatar.png" alt="" aria-hidden="true">
+      <small>TG2</small>
+      <b>林孟姿</b>
+    </button>
+    <button type="button" data-agent-view-button="tg3" role="tab" aria-selected="false" aria-pressed="false">
+      <img src="assets/lanxi-avatar.png" alt="" aria-hidden="true">
+      <small>TG3</small>
+      <b>嵐熙</b>
+    </button>
+  </div>
+  <main>
+    <section class="status-dashboard" id="status-dashboard" aria-live="polite">
+      <span class="state-pill sr-only" id="statePill">讀取中</span>
+      <section class="active-task-banner" aria-labelledby="activeTaskScope">
+        <div class="active-task-copy">
+          <span id="activeTaskScope">蝦咩任務指令</span>
+          <strong id="activeTaskText">--</strong>
+          <p id="activeTaskDetail">Telegram 最新任務會固定放在最上方。</p>
+        </div>
+        <div class="task-control-panel" aria-label="任務功能鍵">
+          <div class="task-control-buttons">
+            <button type="button" class="control-button rescue-button" data-dashboard-action="rescue" title="嘗試恢復卡點並保留目前作業">
+              <span class="control-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 3l7 3v5c0 4.7-2.9 8.4-7 10-4.1-1.6-7-5.3-7-10V6l7-3z"></path>
+                  <path d="M8.4 12.1l2.2 2.2 5-5"></path>
+                </svg>
+              </span><b>救援蝦咩</b>
+            </button>
+            <button type="button" class="control-button stop-button" data-dashboard-action="force-stop" title="依目前頁面角色強制停止任務">
+              <span class="control-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M7.8 3h8.4L21 7.8v8.4L16.2 21H7.8L3 16.2V7.8L7.8 3z"></path>
+                  <path d="M8 8l8 8M16 8l-8 8"></path>
+                </svg>
+              </span><b>停止蝦咩</b>
+            </button>
+            <button type="button" id="refreshStatus" class="control-button sync-control-button" aria-describedby="refreshFeedback" title="立即同步本機即時狀態">
+              <span class="refresh-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M21 12a9 9 0 0 1-15.3 6.4"></path>
+                  <path d="M3 12A9 9 0 0 1 18.3 5.6"></path>
+                  <path d="M18 2v4h-4"></path>
+                  <path d="M6 22v-4h4"></path>
+                </svg>
+              </span>
+              <b class="refresh-label">重新同步</b>
+              <div class="effect-layer" id="refreshEffectLayer" aria-hidden="true"></div>
+            </button>
+          </div>
+          <div class="control-security" aria-label="控制功能驗證">
+            <label for="controlCode">本機操作碼</label>
+            <input id="controlCode" type="password" inputmode="numeric" maxlength="4" autocomplete="one-time-code" placeholder="4 位數操作碼">
+            <button type="button" id="unlockControls" class="control-unlock-button">解鎖 30 分鐘</button>
+            <span id="controlLockStatus" data-state="locked">控制功能已鎖定</span>
+          </div>
+          <div class="restart-options">
+            <label for="restartMode">重啟方式</label>
+            <select id="restartMode">
+              <option value="safe">安全重啟：有任務時自動排隊</option>
+              <option value="force">立即重啟：中斷目前任務</option>
+            </select>
+            <input id="actionReason" type="text" maxlength="120" placeholder="操作原因（選填）">
+          </div>
+          <div class="bot-restart-grid" aria-label="TG1、TG2、TG3 獨立重啟">
+            <button type="button" class="control-button restart-button shami-restart-button" data-dashboard-action="restart" data-action-target="shami" title="只重啟 TG1 蝦咩，不影響 TG2 與 TG3"><span class="control-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 11a8 8 0 1 0-2.3 5.7"></path><path d="M20 4v7h-7"></path></svg></span><b>重啟 TG1</b></button>
+            <button type="button" class="control-button restart-button mengzi-restart-button" data-dashboard-action="restart" data-action-target="mengzi" title="只重啟 TG2 林孟姿，不影響 TG1 與 TG3"><span class="control-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 11a8 8 0 1 0-2.3 5.7"></path><path d="M20 4v7h-7"></path></svg></span><b>重啟 TG2</b></button>
+            <button type="button" class="control-button restart-button tg3-restart-button" data-dashboard-action="restart" data-action-target="tg3" title="只重啟 TG3 嵐熙，不影響 TG1 與 TG2"><span class="control-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 11a8 8 0 1 0-2.3 5.7"></path><path d="M20 4v7h-7"></path></svg></span><b>重啟 TG3</b></button>
+          </div>
+          <small class="restart-warning">預設使用安全重啟；偵測到任務時會等任務完成後再重啟。</small>
+          <small class="refresh-feedback" id="refreshFeedback">即時事件同步連線中。</small>
+          <small class="action-feedback" id="actionFeedback" aria-live="polite">功能鍵待命。</small>
+          <div class="action-history-panel">
+            <div><b>最近操作紀錄</b><span id="eventSyncStatus">事件同步準備中</span></div>
+            <div id="actionHistoryList" class="action-history-list"><span>目前沒有操作紀錄</span></div>
+          </div>
+        </div>
+      </section>
+      <div class="assistant-stage" aria-label="蝦咩、林孟姿與嵐熙助手圖片">
+        <article class="assistant-portrait shami-portrait">
+          <img src="assets/shami-avatar.png" alt="蝦咩 AI 助手圖片">
+        <div><span>TG1</span><b>蝦咩</b></div>
+      </article>
+        <article class="assistant-portrait mengzi-portrait">
+        <img src="assets/mengzi-avatar.png" alt="TG2 AI assistant avatar">
+        <div><span>TG2</span><b>林孟姿</b></div>
+      </article>
+      <article class="assistant-portrait tg3-portrait">
+        <img src="assets/lanxi-avatar.png" alt="嵐熙 AI 助手圖片">
+        <div><span>TG3</span><b>嵐熙</b></div>
+      </article>
+      </div>
+
+      <div class="command-strip" aria-label="總覽狀態">
+        <div class="command-chip shami-chip tg-task-summary-chip"><span>TG1 蝦咩狀態 / 任務</span><b id="chipShamiStatus">讀取中</b><small id="chipCurrentTask">同步中</small></div>
+        <div class="command-chip mengzi-chip tg-task-summary-chip"><span>TG2 林孟姿狀態 / 任務</span><b id="chipMengziStatus">讀取中</b><small id="chipMengziTask">同步中</small></div>
+        <div class="command-chip tg3-chip tg3-merged-chip"><span>嵐熙狀態 / 任務</span><b id="chipTg3Status">讀取中</b><small id="chipTg3Task">同步中</small></div>
+        <div class="command-chip skill-chip"><span>技能包</span><b id="chipSkillStatus">80 個已載入</b><small id="chipSkillDetail">等待清單渲染</small></div>
+      </div>
+
+      <div class="ai-metrics">
+        <article class="energy-ring-card">
+          <div class="energy-ring" id="energyRing" style="--energy: 72"><span id="energyValue">72%</span></div>
+          <div><span>系統活躍度</span><b id="energyLabel">穩定運作</b><p>依 TG1、TG2、TG3 任務心跳與資料來源綜合估算。</p></div>
+        </article>
+        <article class="micro-panel"><span>資訊層級</span><b>重點優先</b><p>主要狀態放大，技術細節保留在監控明細。</p></article>
+      </div>
+
+      <div class="signal-ribbon" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+
+      <div class="dashboard-live-layout">
+        <section class="agent-status-column shami-column" aria-labelledby="shamiColumnTitle">
+          <div class="column-heading"><h3 id="shamiColumnTitle">TG1 蝦咩</h3></div>
+          <div class="agent-slot" id="shamiAgent"></div>
+          <div class="dashboard-grid actor-grid">
+            <article class="status-card primary-status"><span>蝦咩任務狀態</span><strong id="statusLabel">讀取中</strong><p id="statusHeadline">正在讀取本機即時狀態。</p></article>
+            <article class="status-card"><span>今日 token</span><strong id="todayTokens">--</strong><p id="tokenSource">等待統計來源。</p></article>
+          </div>
+          <div class="monitor-panel">
+            <div class="monitor-panel-head"><p class="eyebrow">Shami Monitoring</p><h3>蝦咩監控</h3></div>
+            <div class="monitor-grid compact actor-monitor-grid" id="shamiMonitorGrid"></div>
+          </div>
+          <div class="dashboard-footer column-footer"><div class="mini-list" id="deliverableList"></div></div>
+        </section>
+
+        <section class="agent-status-column mengzi-column" aria-labelledby="mengziColumnTitle">
+          <div class="column-heading"><h3 id="mengziColumnTitle">TG2 林孟姿</h3></div>
+          <div class="agent-slot" id="mengziAgent"></div>
+          <div class="dashboard-grid actor-grid">
+            <article class="status-card primary-status mengzi-primary-status"><span>林孟姿 TGBOT2 狀態</span><strong id="tgbot2StatusLabel">讀取中</strong><p id="tgbot2StatusDetail">正在讀取 TG2 / 林孟姿 bot 狀態。</p></article>
+            <article class="status-card task-status-card"><span>林孟姿目前任務</span><strong id="tgbot2TaskText">同步中</strong><p id="tgbot2TaskSource">等待 TG2 任務來源。</p></article>
+          </div>
+          <div class="monitor-panel">
+            <div class="monitor-panel-head"><p class="eyebrow">TG2 Monitoring</p><h3>林孟姿監控</h3></div>
+            <div class="monitor-grid compact actor-monitor-grid" id="mengziMonitorGrid"></div>
+          </div>
+        </section>
+
+        <section class="agent-status-column tg3-column" aria-labelledby="tg3ColumnTitle">
+          <div class="column-heading"><h3 id="tg3ColumnTitle">TG3 嵐熙</h3></div>
+          <div class="agent-slot" id="tg3Agent"></div>
+          <div class="dashboard-grid actor-grid">
+            <article class="status-card primary-status tg3-primary-status tg3-merged-status">
+              <span>嵐熙狀態 / 目前任務</span>
+              <strong id="tgbot3StatusLabel">讀取中</strong>
+              <p id="tgbot3StatusDetail">正在讀取嵐熙 bot 狀態。</p>
+              <div class="merged-task-line"><b id="tgbot3TaskText">同步中</b><small id="tgbot3TaskSource">等待嵐熙任務來源。</small></div>
+            </article>
+            <article class="status-card blocker-status"><span>目前卡點</span><strong id="blockerText">讀取中</strong><p id="nextAction">等待同步資料。</p></article>
+            <article class="status-card"><span>最新檢查</span><strong id="liveAge">--</strong><p><span id="updatedAt">--</span><br><span id="refreshNote">頁面每秒重新讀取狀態資料。</span></p></article>
+          </div>
+          <div class="monitor-panel">
+            <div class="monitor-panel-head"><p class="eyebrow">Lanxi Monitoring</p><h3>嵐熙監控</h3></div>
+            <div class="monitor-grid compact actor-monitor-grid" id="tg3MonitorGrid"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="overview" id="overview">
+      <div class="overview-copy">
+        <p class="eyebrow">TG123 Unified Command Center</p>
+        <h2>任務狀態、工作流、技能與安全控制，整合成一個入口</h2>
+        <p>保留即時任務與三端控制能力，合併完整工作流、61 項去重技能、交付標準與快速指令。主人只需提出成果目標，最後驗收。</p>
+        <div class="quick-actions" aria-label="主要區塊">
+          <a href="#workflows">工作流</a><a href="#monitoring">即時監控</a><a href="#skills">技能庫</a><a href="#delivery-rules">交付標準</a><a href="#quick-commands">快速指令</a>
+        </div>
+      </div>
+      <div class="stat-grid" id="statGrid"></div>
+    </section>
+
+
+    <section id="workflows" class="content-section merged-section">
+      <div class="section-heading"><div><p class="eyebrow">Core Workflows</p><h2>主要工作流</h2></div><span class="status done">統一入口</span></div>
+      <div class="workflow-grid">
+        <article><span>影</span><h3>HFSW 長影片</h3><p>文案、藍星圖片、旁白、繁體字幕、配樂、合成與完整品質檢查。</p></article>
+        <article><span>圖</span><h3>IMS／藍星做圖</h3><p>海報、教學圖、商品圖、分鏡與原圖驗證，同源 Telegram 文件交付。</p></article>
+        <article><span>短</span><h3>短影音製作</h3><p>ACS、ACS2、SD、Dreamina、Seedance、長影音切短影音與剪輯復刻。</p></article>
+        <article><span>N</span><h3>NBS／NotebookLM</h3><p>來源整理、摘要、MP3、簡報、影片與多成品逐項驗證。</p></article>
+        <article><span>網</span><h3>WBS 網站部署</h3><p>網站建立、復刻、桌機手機驗證、GitHub Pages 部署與公開網址檢查。</p></article>
+        <article><span>程</span><h3>Codex 程式開發</h3><p>前後端、API 中轉、資料庫、測試、版本管理、程式審查與大型專案。</p></article>
+        <article><span>研</span><h3>研究與分析</h3><p>幣安 Coin、網站資料、影片逐格、文件分析與可信來源核對。</p></article>
+        <article><span>營</span><h3>客服與營運</h3><p>Telegram、LINE、權限案件、登入操作、排程維護與每日自我升級。</p></article>
+      </div>
+    </section>
+    <section id="monitoring" class="content-section">
+      <div class="section-heading"><div><p class="eyebrow">Monitoring Detail</p><h2>監控項目狀態</h2></div><span class="status watch">秒級刷新</span></div>
+      <div class="monitor-section-columns">
+        <section class="monitor-section-column shami-monitor-section"><div class="mini-section-title"><h3>蝦咩狀態</h3></div><div class="monitor-grid detail" id="shamiMonitorSectionGrid"></div></section>
+        <section class="monitor-section-column mengzi-monitor-section"><div class="mini-section-title"><h3>林孟姿狀態</h3></div><div class="monitor-grid detail" id="mengziMonitorSectionGrid"></div></section>
+        <section class="monitor-section-column tg3-monitor-section"><div class="mini-section-title"><h3>嵐熙狀態</h3></div><div class="monitor-grid detail" id="tg3MonitorSectionGrid"></div></section>
+      </div>
+    </section>
+
+    <section id="skills" class="content-section skill-section">
+      <div class="section-heading"><div><p class="eyebrow">61 Unique Skills</p><h2>完整技能庫</h2></div><span class="status done">169 安裝項目已去重</span></div>
+      <div class="skill-control-bar">
+        <label class="skill-search-field" for="skillSearch">
+          <span>搜尋技能</span>
+          <input id="skillSearch" type="search" placeholder="輸入技能、功能、場景">
+        </label>
+        <div class="skill-view-meta" id="skillViewMeta"></div>
+      </div>
+      <div class="skill-layout">
+        <aside class="skill-sidebar" aria-label="技能包分類與統計">
+          <div class="skill-summary" id="skillSummary"></div>
+          <div class="skill-filter-panel">
+            <div class="mini-section-title"><p class="eyebrow">Categories</p><h3>分類</h3></div>
+            <div class="skill-filters" id="skillFilters"></div>
+          </div>
+        </aside>
+        <div class="skill-main">
+          <div class="skill-group-overview" id="skillGroupOverview"></div>
+          <div class="skill-card-grid" id="skillCards"></div>
+          <div class="skill-empty" id="skillEmpty">沒有符合的技能包</div>
+        </div>
+      </div>
+      <details class="skill-table-disclosure">
+        <summary>完整表格</summary>
+        <div class="table-shell"><table><thead><tr><th>技能包</th><th>分類</th><th>功能</th><th>使用場景</th><th>觸發 / 備註</th></tr></thead><tbody id="skillTable"></tbody></table></div>
+      </details>
+    </section>
+
+
+    <section id="delivery-rules" class="content-section merged-section">
+      <div class="section-heading"><div><p class="eyebrow">Closed Loop</p><h2>執行與交付標準</h2></div><span class="status done">成果導向</span></div>
+      <div class="rule-grid">
+        <article><b>01</b><div><h3>最新任務隔離</h3><p>不混入舊素材、舊角色、舊網頁狀態或不存在的素材編號。</p></div></article>
+        <article><b>02</b><div><h3>助理負責設計</h3><p>需求拆解、方案、執行、檢查與修正由 TG123 完成，主人只負責驗收。</p></div></article>
+        <article><b>03</b><div><h3>封閉循環驗證</h3><p>讀取真實狀態、執行、驗證、保存進度、修正，直到成品可交付。</p></div></article>
+        <article><b>04</b><div><h3>只修失敗環節</h3><p>先檢查現有成果與根因，不因單點錯誤盲目重跑整套流程。</p></div></article>
+        <article><b>05</b><div><h3>同源 Bot 回傳</h3><p>TG1、TG2、TG3 各自只回傳自己收到的任務與成品。</p></div></article>
+        <article><b>06</b><div><h3>驗證後才完成</h3><p>檔案須存在可讀、網站須公開更新、媒體規格須通過檢查。</p></div></article>
+      </div>
+    </section>
+
+    <section id="quick-commands" class="content-section merged-section">
+      <div class="section-heading"><div><p class="eyebrow">Quick Start</p><h2>常用任務指令</h2></div><span class="status watch">點擊複製</span></div>
+      <div class="command-grid">
+        <button data-copy="hfsw 製作 5 分鐘 9:16 繁體中文教學影片，完成後回傳成品"><code>HFSW 教學影片</code><span>旁白、字幕、配樂與 QA</span></button>
+        <button data-copy="把這份文案做成 9:16 繁體中文科技海報"><code>繁中科技海報</code><span>藍星做圖與原圖交付</span></button>
+        <button data-copy="把這個網站完整復刻並公開部署，桌機手機都要驗證"><code>復刻網站並部署</code><span>WBS 與公開驗證</span></button>
+        <button data-copy="把這支長影片剪成 3 支 9:16 短影音"><code>長影片剪短影音</code><span>轉錄、亮點、字幕與輸出</span></button>
+        <button data-copy="用 NBS 把這份資料做成摘要、MP3 音訊與簡報"><code>NBS 多成品</code><span>音訊、簡報與逐項驗證</span></button>
+        <button data-copy="檢查 TG1、TG2、TG3 的真實狀態並修復異常"><code>檢查 TG123</code><span>程序、心跳與任務狀態</span></button>
+      </div>
+    </section>
+    <section id="sop-library" class="content-section">
+      <div class="section-heading"><div><p class="eyebrow">SOP Library</p><h2>任務回覆與狀態 SOP</h2></div><span class="status done">可追蹤</span></div>
+      <div class="sop-grid" id="sopGrid"></div>
+    </section>
+    <div id="completedGrid" hidden></div>
+    <div id="timelineList" hidden></div>
+  </main>
+
+  <footer><span>TG123 AI 自動化中控台・即時任務、61 項技能、工作流與安全控制整合・2026 年 7 月 17 日</span></footer>
+
+  <script src="live-status-config.js?v=20260704-180800-control-fix"></script>
+  <script src="skills-data.js?v=20260717"></script>
+  <script src="app.js?v=20260717-merged-dashboard"></script>
 </body>
 </html>
+
+

@@ -1,0 +1,140 @@
+{
+    "statusKey":  "completed",
+    "statusLabel":  "已回覆完成",
+    "headline":  "image2做圖 這份文案設計成繁體中文版海報給我，ai科技風格 9：16 再麻煩回傳藍星聚合平台的註冊信箱 ‼️務必先向推薦人索取註冊連接 ‼️註冊完成後，請將「註冊信箱」回傳給我們，我們會協助您開通正式帳號與贈品✨ ⚠️ 重要提醒： 請",
+    "currentTaskInstruction":  "image2做圖 這份文案設計成繁體中文版海報給我，ai科技風格 9：16 再麻煩回傳藍星聚合平台的註冊信箱 ‼️務必先向推薦人索取註冊連接 ‼️註冊完成後，請將「註冊信箱」回傳給我們，我們會協助您開通正式帳號與贈品✨ ⚠️ 重要提醒： 請",
+    "blocker":  "沒有卡點",
+    "nextAction":  "可直接查看 Telegram 回覆結果。",
+    "updatedAt":  "2026-07-17T22:26:42+08:00",
+    "checkedAt":  "2026-07-17T22:26:42+08:00",
+    "sourceType":  "local-generator",
+    "sourceLabel":  "本機即時狀態產生器",
+    "refreshSeconds":  1,
+    "token":  {
+                  "totalTokens":  73836795,
+                  "taskCount":  20,
+                  "source":  "本機 Codex 執行緒紀錄"
+              },
+    "heartbeat":  {
+                      "name":  "蝦咩",
+                      "ageSeconds":  0,
+                      "activeRequests":  0
+                  },
+    "tgbot2":  {
+                   "name":  "林孟姿",
+                   "statusKey":  "standby",
+                   "statusLabel":  "正常待命",
+                   "ageSeconds":  28,
+                   "activeRequests":  0,
+                   "currentTaskInstruction":  "最近完成：沒有m01 m04這些 不要再混淆了",
+                   "currentTaskSource":  "tg-openai-bot-2/telegram_request_status.json"
+               },
+    "tgbot3":  {
+                   "name":  "嵐熙",
+                   "statusKey":  "running",
+                   "statusLabel":  "運作中",
+                   "ageSeconds":  4,
+                   "activeRequests":  1,
+                   "currentTaskInstruction":  "內容改成我tg1 2 3的內容 所有我的工作流 技能",
+                   "currentTaskSource":  "tg-openai-bot-3/telegram_request_status.json"
+               },
+    "monitors":  [
+                     {
+                         "id":  "telegram-heartbeat",
+                         "label":  "蝦咩心跳",
+                         "statusKey":  "running",
+                         "statusLabel":  "正常",
+                         "detail":  "心跳 0 秒前，執行中任務 0",
+                         "source":  "codex_bot_heartbeat.json"
+                     },
+                     {
+                         "id":  "telegram-request",
+                         "label":  "Telegram 任務佇列",
+                         "statusKey":  "completed",
+                         "statusLabel":  "已回覆完成",
+                         "detail":  "image2做圖 這份文案設計成繁體中文版海報給我，ai科技風格 9：16 再麻煩回傳藍星聚合平台的註冊信箱 ‼️務必先向推薦人索取註冊連接 ‼️註冊完成後，請將「註冊信箱」回傳給我們，我們會協助您開通正式帳號與贈品✨ ⚠️ 重要提醒： 請",
+                         "source":  "telegram_request_status.json"
+                     },
+                     {
+                         "id":  "tgbot2-heartbeat",
+                         "label":  "林孟姿心跳",
+                         "statusKey":  "running",
+                         "statusLabel":  "正常",
+                         "detail":  "心跳 28 秒前，執行中任務 0",
+                         "source":  "tg-openai-bot-2/codex_bot_heartbeat.json"
+                     },
+                     {
+                         "id":  "tgbot2-request",
+                         "label":  "林孟姿任務佇列",
+                         "statusKey":  "standby",
+                         "statusLabel":  "正常待命",
+                         "detail":  "最近完成：沒有m01 m04這些 不要再混淆了",
+                         "source":  "tg-openai-bot-2/telegram_request_status.json"
+                     },
+                     {
+                         "id":  "tgbot3-heartbeat",
+                         "label":  "嵐熙心跳",
+                         "statusKey":  "running",
+                         "statusLabel":  "正常",
+                         "detail":  "心跳 4 秒前，執行中任務 1",
+                         "source":  "tg-openai-bot-3/codex_bot_heartbeat.json"
+                     },
+                     {
+                         "id":  "tgbot3-request",
+                         "label":  "嵐熙任務佇列",
+                         "statusKey":  "running",
+                         "statusLabel":  "運作中",
+                         "detail":  "內容改成我tg1 2 3的內容 所有我的工作流 技能",
+                         "source":  "tg-openai-bot-3/telegram_request_status.json"
+                     },
+                     {
+                         "id":  "codex-token",
+                         "label":  "Codex token 統計",
+                         "statusKey":  "running",
+                         "statusLabel":  "已讀取",
+                         "detail":  "73836795 tokens，任務 20",
+                         "source":  "本機 Codex 執行緒紀錄"
+                     },
+                     {
+                         "id":  "dashboard-control-action",
+                         "label":  "最近控制動作",
+                         "statusKey":  "running",
+                         "statusLabel":  "卡點救援：林孟姿",
+                         "detail":  "啟動排程 Codex Telegram Bot 2 Watchdog Hourly、Codex Telegram Bot 2 Watchdog Startup；停止排程 ；停用排程 ",
+                         "source":  "dashboard-control-actions"
+                     },
+                     {
+                         "id":  "runtime-generator",
+                         "label":  "狀態產生器",
+                         "statusKey":  "running",
+                         "statusLabel":  "已更新",
+                         "detail":  "產生時間 2026-07-17 22:26:42",
+                         "source":  "tools/update-runtime-status.ps1"
+                     },
+                     {
+                         "id":  "pages-snapshot",
+                         "label":  "GitHub Pages 快照",
+                         "statusKey":  "running",
+                         "statusLabel":  "可讀取",
+                         "detail":  "runtime-status.json 提供公開頁備援狀態",
+                         "source":  "runtime-status.json"
+                     },
+                     {
+                         "id":  "deliverable-check",
+                         "label":  "交付結果追蹤",
+                         "statusKey":  "running",
+                         "statusLabel":  "已列入",
+                         "detail":  "公開網址、狀態資料與網站更新會列入交付結果",
+                         "source":  "dashboard deliverables"
+                     }
+                 ],
+    "deliverables":  [
+                         "公開總控台：GitHub Pages",
+                         "狀態資料：runtime-status.json",
+                         "監控項目：TG1、TG2、TG3",
+                         "林孟姿 TGBOT2：獨立欄位",
+                         "嵐熙 TGBOT3：獨立欄位",
+                         "功能鍵：卡點救援 / 強制停止",
+                         "技能包清單：功能與使用場景"
+                     ]
+}
