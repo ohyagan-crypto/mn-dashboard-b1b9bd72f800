@@ -114,6 +114,78 @@ const completedItems = [
   }
 ];
 
+const focusItems = [
+  {
+    title: "網站控制與知識層正式合一",
+    status: "追蹤中",
+    summary: "目前已把即時監控站與工作地圖站融合到同一個公開站，後續只維護一個主入口，避免資訊分散與版本脫節。",
+    points: ["保留 TG123 監控與控制", "保留工作地圖與路線圖", "刪除重複說明與低價值區塊"]
+  },
+  {
+    title: "私人版 Codex Cloud 建置",
+    status: "追蹤中",
+    summary: "延續本機 Codex Cloud 規劃，後續要把任務控制台、背景佇列、隔離工作區與多代理協作做成可實際運作的系統。",
+    points: ["任務建立與續跑", "多代理分工", "專案與工作區隔離"]
+  },
+  {
+    title: "HFSW 與多媒體工作流升級",
+    status: "追蹤中",
+    summary: "HFSW 已有 0.9 倍語速、字幕上移 10%、分層保護與 QA；接下來聚焦口述更穩、畫面步驟對位與自動抽查。",
+    points: ["字幕逐句對齊", "步驟畫面鎖定", "最終抽查報告"]
+  },
+  {
+    title: "私人 API 中控與聚合平台方向",
+    status: "追蹤中",
+    summary: "目標是讓 TG1、TG2、TG3 與多個 Codex 共享同一個中轉入口，支援模型路由、額度與成本控制。",
+    points: ["內部金鑰管理", "Claude 優先與 GPT fallback", "用量與成本報表"]
+  }
+];
+
+const roadmapItems = [
+  { horizon: "現在", title: "一個站整合全部入口", body: "只保留一個主控台網址，讓狀態、技能、SOP、追蹤事項與下一步都能在同一頁完成判斷。", ownerValue: "少切站" },
+  { horizon: "短期", title: "把 TG123 狀態變成真正可操作的工作面板", body: "除了查看外，也能在安全限制下直接做重啟、救援、部署檢查與任務續跑。", ownerValue: "少來回" },
+  { horizon: "短期", title: "把技能、記憶與工作流自動快照", body: "定期從本機索引重建技能表、記憶主題與待辦，避免網站資訊落後。", ownerValue: "少過時" },
+  { horizon: "中期", title: "建立私人版藍星式 API 中控", body: "用合法上游 API 建立統一入口，支援多 Codex、模型切換、額度與排隊。", ownerValue: "可擴充" },
+  { horizon: "中期", title: "本機 Codex Cloud 任務中控", body: "瀏覽器建立任務、背景執行、保存進度、分工代理與驗收歷程。", ownerValue: "可長跑" },
+  { horizon: "長期", title: "工作成果產品化", body: "把網站、圖片、影片、NBS、客服與部署流程做成可複製的客戶版系統。", ownerValue: "可營運" }
+];
+
+const todoGroups = [
+  {
+    title: "立即",
+    items: [
+      "持續只維護這個主控台站點",
+      "公開站每次更新後都做桌機與手機驗證",
+      "把高價值任務的成功流程持續沉澱成可搜尋 SOP"
+    ]
+  },
+  {
+    title: "下一步",
+    items: [
+      "接上本機 Codex Cloud 第一階段實作",
+      "整理私人 API 中控的 MVP 功能清單",
+      "把 TG123 狀態資料來源再做一次去重與命名統一"
+    ]
+  },
+  {
+    title: "之後",
+    items: [
+      "把技能表改成由索引自動更新",
+      "加入成本與用量可視化",
+      "建立可交接的客戶版工作台模板"
+    ]
+  }
+];
+
+const memoryThemes = [
+  { title: "Telegram 同源交付", count: 1, summary: "TG1、TG2、TG3 各自只回自己的任務與檔案，成品必須回到原對話。" },
+  { title: "網站與部署", count: 1, summary: "網站任務先做本機實體檔，再驗證、推送與檢查公開網址是否真的更新。" },
+  { title: "圖片與藍星", count: 1, summary: "做圖只走藍星平台，先確認、再生成、下載原圖、驗證後交付。" },
+  { title: "HFSW 長影片", count: 1, summary: "文案、圖片、旁白、字幕、配樂、合成與 QA 必須形成封閉式工作循環。" },
+  { title: "技能與記憶交接", count: 1, summary: "打包時必須附安裝教學、觸發詞、測試方式與禁止外露的敏感資料規則。" },
+  { title: "回覆安全", count: 1, summary: "對主人與 Telegram 只輸出乾淨繁體中文，不回 raw log、工具狀態或固定模板。" }
+];
+
 const sopItems = [
   {
     title: "任務處理",
@@ -1086,12 +1158,67 @@ function renderCompleted() {
   `).join("");
 }
 
+function renderFocus() {
+  const target = $("#focusGrid");
+  if (!target) return;
+  target.innerHTML = focusItems.map((item) => `
+    <article class="card">
+      <div class="card-top">
+        <h3>${escapeHtml(item.title)}</h3>
+        <span class="status watch">${escapeHtml(item.status)}</span>
+      </div>
+      <p>${escapeHtml(item.summary)}</p>
+      ${Array.isArray(item.points) && item.points.length ? `<ul>${item.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}
+    </article>
+  `).join("");
+}
+
 function renderSop() {
   $("#sopGrid").innerHTML = sopItems.map((item) => `
     <article class="sop-card">
       <h3>${escapeHtml(item.title)}</h3>
       <p>${escapeHtml(item.summary)}</p>
       <ol>${item.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("")}</ol>
+    </article>
+  `).join("");
+}
+
+function renderRoadmap() {
+  const target = $("#roadmapList");
+  if (!target) return;
+  target.innerHTML = roadmapItems.map((item) => `
+    <article class="roadmap-item">
+      <b>${escapeHtml(item.horizon)}</b>
+      <div>
+        <h3>${escapeHtml(item.title)}</h3>
+        <p>${escapeHtml(item.body)}</p>
+      </div>
+      <span class="tag">${escapeHtml(item.ownerValue)}</span>
+    </article>
+  `).join("");
+}
+
+function renderTodos() {
+  const target = $("#todoBoard");
+  if (!target) return;
+  target.innerHTML = todoGroups.map((group) => `
+    <article class="todo-card">
+      <h3>${escapeHtml(group.title)}</h3>
+      <ul>${group.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+    </article>
+  `).join("");
+}
+
+function renderMemories() {
+  const target = $("#memoryGrid");
+  if (!target) return;
+  target.innerHTML = memoryThemes.map((item) => `
+    <article class="memory-card">
+      <div class="card-top">
+        <h3>${escapeHtml(item.title)}</h3>
+        <span class="status done">${escapeHtml(String(item.count))}</span>
+      </div>
+      <p>${escapeHtml(item.summary)}</p>
     </article>
   `).join("");
 }
@@ -1253,12 +1380,84 @@ function renderSkills() {
 }
 
 function renderTimeline() {
-  $("#timelineList").innerHTML = timeline.map(([time, text]) => `
+  const target = $("#timelineList");
+  if (!target) return;
+  target.innerHTML = timeline.map(([time, text]) => `
     <article class="timeline-item">
       <time>${escapeHtml(time)}</time>
       <p>${escapeHtml(text)}</p>
     </article>
   `).join("");
+}
+
+function renderMap() {
+  const canvas = $("#systemMap");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  const nodes = [
+    { label: "Telegram 任務入口", x: 520, y: 260, r: 76, color: "#152a3a" },
+    { label: "TG123 即時監控", x: 275, y: 128, r: 56, color: "#1f6feb" },
+    { label: "技能與記憶", x: 770, y: 128, r: 56, color: "#138a63" },
+    { label: "圖片 / IMS", x: 200, y: 340, r: 50, color: "#c13f3f" },
+    { label: "HFSW / 影音", x: 360, y: 420, r: 46, color: "#9255f2" },
+    { label: "WBS / 網站", x: 680, y: 420, r: 46, color: "#168399" },
+    { label: "NBS / 摘要", x: 842, y: 340, r: 50, color: "#a96f00" },
+    { label: "部署 / 交付", x: 520, y: 90, r: 44, color: "#5c6976" }
+  ];
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "rgba(180, 231, 255, 0.72)";
+  const center = nodes[0];
+  nodes.slice(1).forEach((node) => {
+    ctx.beginPath();
+    ctx.moveTo(center.x, center.y);
+    ctx.lineTo(node.x, node.y);
+    ctx.stroke();
+  });
+
+  nodes.forEach((node) => {
+    ctx.beginPath();
+    ctx.fillStyle = node.color;
+    ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#f8fdff";
+    ctx.font = node.r >= 56 ? "700 22px Microsoft JhengHei" : "700 18px Microsoft JhengHei";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    wrapCanvasText(ctx, node.label, node.x, node.y, node.r * 1.6, 24);
+  });
+
+  const legend = $("#mapLegend");
+  if (legend) {
+    legend.innerHTML = [
+      "Telegram 是任務入口，也是文字與檔案交付出口。",
+      "TG123 即時監控保留三端狀態、控制功能與心跳資料。",
+      "工作流層集中網站、圖片、影音、NBS 與部署能力。",
+      "技能與記憶層負責把成功方式沉澱成可重複執行的系統。"
+    ].map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  }
+}
+
+function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = String(text).split(" ");
+  const lines = [];
+  let line = "";
+  words.forEach((word) => {
+    const testLine = line ? `${line} ${word}` : word;
+    if (ctx.measureText(testLine).width > maxWidth && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = testLine;
+    }
+  });
+  lines.push(line);
+  const startY = y - ((lines.length - 1) * lineHeight) / 2;
+  lines.forEach((lineText, index) => {
+    ctx.fillText(lineText, x, startY + index * lineHeight);
+  });
 }
 
 function buildMonitorItems(status) {
@@ -1924,6 +2123,11 @@ function renderAiEnhancements(status, displayTime) {
 function init() {
   renderStats();
   renderCompleted();
+  renderFocus();
+  renderRoadmap();
+  renderTodos();
+  renderMemories();
+  renderMap();
   renderSop();
   renderSkills();
   renderTimeline();

@@ -3261,7 +3261,29 @@ body.light-mode .theme-toggle {
 .command-grid button:hover,.command-grid button:focus-visible{transform:translateY(-2px);border-color:rgba(101,229,255,.48);box-shadow:0 16px 32px rgba(0,0,0,.22)}
 .command-grid code{font-family:inherit;font-size:16px;font-weight:900;color:#82edff}
 .command-grid span{color:var(--muted,#9eb2c9);font-size:13px;line-height:1.5}
+.map-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,.9fr);gap:18px;align-items:stretch}
+.map-layout canvas{width:100%;height:auto;display:block;border:1px solid rgba(46,233,255,.16);border-radius:22px;background:radial-gradient(circle at top,rgba(46,233,255,.08),transparent 34%),linear-gradient(180deg,rgba(8,20,38,.96),rgba(5,15,29,.92))}
+.map-notes,.progress-panel,.todo-card,.memory-card{border:1px solid rgba(120,209,255,.15);border-radius:20px;background:rgba(5,18,36,.78)}
+.map-notes{display:grid;align-content:start;gap:12px;padding:20px}
+.map-notes h3,.progress-panel h3,.todo-card h3,.memory-card h3{margin:0;color:#f7fbff;font-size:18px}
+.map-notes p,.memory-card p,.roadmap-item p,.timeline-item p,.todo-card li{color:var(--muted,#9eb2c9);font-size:14px;line-height:1.7}
+.map-notes ul{margin:0;padding-left:18px}
+.map-notes li{color:rgba(235,255,248,.82);margin-bottom:8px}
+.progress-columns,.todo-memory-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.secondary-progress-columns{margin-top:16px}
+.progress-panel{padding:18px}
+.roadmap-list,.todo-board,.memory-grid{display:grid;gap:12px}
+.roadmap-item{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;padding:16px;border:1px solid rgba(120,209,255,.15);border-radius:18px;background:rgba(6,20,39,.78)}
+.roadmap-item>b{display:inline-flex;min-width:56px;justify-content:center;padding:7px 10px;border-radius:999px;background:rgba(46,233,255,.12);color:#7ee9ff;font-size:12px;font-weight:900}
+.roadmap-item h3{margin:0 0 6px;color:#f7fbff;font-size:17px}
+.tag{display:inline-flex;align-items:center;min-height:30px;padding:4px 10px;border:1px solid rgba(185,255,79,.22);border-radius:999px;background:rgba(185,255,79,.08);color:#dfffb2;font-size:12px;font-weight:900}
+.todo-board{grid-template-columns:repeat(3,minmax(0,1fr))}
+.todo-card{padding:18px}
+.todo-card ul{margin:12px 0 0;padding-left:18px}
+.todo-card li+li{margin-top:8px}
+.memory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.memory-card{padding:16px}
 .copy-toast{position:fixed;right:20px;bottom:20px;z-index:1000;padding:11px 16px;border:1px solid rgba(109,233,255,.4);border-radius:12px;background:rgba(4,18,34,.95);color:#dffbff;box-shadow:0 14px 34px rgba(0,0,0,.32);opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s ease}
 .copy-toast.show{opacity:1;transform:none}
-@media(max-width:1040px){.workflow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:680px){.workflow-grid,.rule-grid,.command-grid{grid-template-columns:1fr}.workflow-grid article,.rule-grid article,.command-grid button{border-radius:16px}.quick-actions{gap:8px}.quick-actions a{flex:1 1 calc(50% - 8px);text-align:center}}
+@media(max-width:1040px){.workflow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.map-layout,.progress-columns,.todo-memory-layout{grid-template-columns:1fr}.todo-board,.memory-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.workflow-grid,.rule-grid,.command-grid,.todo-board,.memory-grid{grid-template-columns:1fr}.workflow-grid article,.rule-grid article,.command-grid button{border-radius:16px}.quick-actions{gap:8px}.quick-actions a{flex:1 1 calc(50% - 8px);text-align:center}.roadmap-item{grid-template-columns:1fr}.roadmap-item .tag{justify-self:start}}

@@ -178,15 +178,73 @@
     <section class="overview" id="overview">
       <div class="overview-copy">
         <p class="eyebrow">TG123 Unified Command Center</p>
-        <h2>任務狀態、工作流、技能與安全控制，整合成一個入口</h2>
-        <p>保留即時任務與三端控制能力，合併完整工作流、61 項去重技能、交付標準與快速指令。主人只需提出成果目標，最後驗收。</p>
+        <h2>把即時監控中控台與工作地圖融合成一個真正可用的入口</h2>
+        <p>保留 TG1、TG2、TG3 的即時任務、控制功能與技能庫，再把舊站有價值的系統藍圖、追蹤事項、路線圖與待辦整合進來。不是兩個網站並排，而是一個去蕪存菁後的主控台。</p>
         <div class="quick-actions" aria-label="主要區塊">
-          <a href="#workflows">工作流</a><a href="#monitoring">即時監控</a><a href="#skills">技能庫</a><a href="#delivery-rules">交付標準</a><a href="#quick-commands">快速指令</a>
+          <a href="#system-map">系統藍圖</a><a href="#progress-map">工作地圖</a><a href="#workflows">工作流</a><a href="#monitoring">即時監控</a><a href="#skills">技能庫</a><a href="#delivery-rules">交付標準</a>
         </div>
       </div>
       <div class="stat-grid" id="statGrid"></div>
     </section>
 
+    <section id="system-map" class="content-section map-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">System Map</p><h2>融合後系統藍圖</h2></div>
+        <span class="status done">保留核心</span>
+      </div>
+      <div class="map-layout">
+        <canvas id="systemMap" width="1040" height="520" aria-label="TG123 工作系統藍圖"></canvas>
+        <div class="map-notes">
+          <h3>這版保留什麼</h3>
+          <p>以 Telegram 任務入口為中心，往外連到網站、圖片、影片、NotebookLM、技能、記憶、交付與部署。把控制台的即時能力與工作地圖的知識層合成同一張圖。</p>
+          <ul id="mapLegend"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress-map" class="content-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Work Map</p><h2>工作地圖與追蹤重點</h2></div>
+        <span class="status watch">去蕪存菁</span>
+      </div>
+      <div class="progress-columns">
+        <div class="progress-panel">
+          <div class="mini-section-title"><h3>已融合完成</h3></div>
+          <div class="item-grid" id="completedGrid"></div>
+        </div>
+        <div class="progress-panel">
+          <div class="mini-section-title"><h3>目前追蹤</h3></div>
+          <div class="item-grid" id="focusGrid"></div>
+        </div>
+      </div>
+      <div class="progress-columns secondary-progress-columns">
+        <div class="progress-panel">
+          <div class="mini-section-title"><h3>版本演進</h3></div>
+          <div class="timeline" id="timelineList"></div>
+        </div>
+        <div class="progress-panel">
+          <div class="mini-section-title"><h3>下一步路線圖</h3></div>
+          <div class="roadmap-list" id="roadmapList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="todo-board" class="content-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Next Actions</p><h2>待辦與記憶主題</h2></div>
+        <span class="status done">整合完成</span>
+      </div>
+      <div class="todo-memory-layout">
+        <div>
+          <div class="mini-section-title"><h3>待辦清單</h3></div>
+          <div class="todo-board" id="todoBoard"></div>
+        </div>
+        <div>
+          <div class="mini-section-title"><h3>記憶主題</h3></div>
+          <div class="memory-grid" id="memoryGrid"></div>
+        </div>
+      </div>
+    </section>
 
     <section id="workflows" class="content-section merged-section">
       <div class="section-heading"><div><p class="eyebrow">Core Workflows</p><h2>主要工作流</h2></div><span class="status done">統一入口</span></div>
@@ -267,8 +325,6 @@
       <div class="section-heading"><div><p class="eyebrow">SOP Library</p><h2>任務回覆與狀態 SOP</h2></div><span class="status done">可追蹤</span></div>
       <div class="sop-grid" id="sopGrid"></div>
     </section>
-    <div id="completedGrid" hidden></div>
-    <div id="timelineList" hidden></div>
   </main>
 
   <footer><span>TG123 AI 自動化中控台・即時任務、61 項技能、工作流與安全控制整合・2026 年 7 月 17 日</span></footer>
