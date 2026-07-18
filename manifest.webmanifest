@@ -1,1 +1,22 @@
-﻿{"name":"TG123 AI 自動化中控台","short_name":"TG123","start_url":"./","display":"standalone","background_color":"#06101f","theme_color":"#071223","lang":"zh-Hant","description":"TG1、TG2、TG3 即時任務、工作流、技能與安全控制整合中控台"}
+{
+  "name": "TG123 AI \u81ea\u52d5\u5316\u4e2d\u63a7\u53f0",
+  "short_name": "TG123",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#06101f",
+  "theme_color": "#071223",
+  "lang": "zh-Hant",
+  "description": "TG1\u3001TG2\u3001TG3 \u5373\u6642\u4efb\u52d9\u3001\u5de5\u4f5c\u6d41\u3001\u6280\u80fd\u8207\u5b89\u5168\u63a7\u5236\u6574\u5408\u4e2d\u63a7\u53f0",
+  "icons": [
+    {"src":"assets/lanxi-avatar.png","sizes":"640x640","type":"image/png","purpose":"any maskable"}
+  ],
+  "shortcuts": [
+    {"name":"\u67e5\u770b\u5373\u6642\u4efb\u52d9","short_name":"\u5373\u6642\u4efb\u52d9","url":"./#status-dashboard"},
+    {"name":"\u67e5\u770b\u5de5\u4f5c\u6d41","short_name":"\u5de5\u4f5c\u6d41","url":"./#workflows"},
+    {"name":"\u67e5\u770b\u6280\u80fd\u5eab","short_name":"\u6280\u80fd\u5eab","url":"./#skills"}
+  ]
+}

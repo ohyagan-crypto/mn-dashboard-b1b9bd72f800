@@ -3285,5 +3285,29 @@ body.light-mode .theme-toggle {
 .memory-card{padding:16px}
 .copy-toast{position:fixed;right:20px;bottom:20px;z-index:1000;padding:11px 16px;border:1px solid rgba(109,233,255,.4);border-radius:12px;background:rgba(4,18,34,.95);color:#dffbff;box-shadow:0 14px 34px rgba(0,0,0,.32);opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s ease}
 .copy-toast.show{opacity:1;transform:none}
+.install-dialog-open{overflow:hidden}
+.app-install-fab{position:fixed;right:18px;bottom:18px;z-index:850;display:flex;align-items:center;gap:9px;min-height:48px;padding:10px 16px;border:1px solid rgba(126,237,255,.55);border-radius:999px;background:linear-gradient(135deg,#16c9e7,#7c5cff);color:#04111e;font:inherit;font-weight:1000;box-shadow:0 16px 44px rgba(0,0,0,.38),0 0 28px rgba(54,221,255,.24);cursor:pointer}
+.app-install-fab[hidden]{display:none}
+.app-install-fab span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.74);font-size:20px;line-height:1}
+.app-install-overlay{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:20px;background:rgba(1,7,16,.76);backdrop-filter:blur(14px)}
+.app-install-overlay[hidden]{display:none}
+.app-install-dialog{position:relative;width:min(460px,100%);padding:30px;border:1px solid rgba(126,237,255,.32);border-radius:28px;background:radial-gradient(circle at 50% 0,rgba(46,233,255,.15),transparent 34%),linear-gradient(160deg,rgba(10,30,56,.99),rgba(4,14,29,.99));box-shadow:0 30px 90px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.08);text-align:center}
+.app-install-close{position:absolute;top:14px;right:14px;display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(255,255,255,.06);color:#dffaff;font-size:26px;line-height:1;cursor:pointer}
+.app-install-brand{width:86px;height:86px;margin:0 auto 18px;padding:5px;border:1px solid rgba(120,235,255,.38);border-radius:24px;background:linear-gradient(135deg,rgba(34,211,238,.24),rgba(139,92,246,.22));box-shadow:0 0 36px rgba(34,211,238,.2)}
+.app-install-brand img{width:100%;height:100%;border-radius:19px;object-fit:cover}
+.app-install-dialog .eyebrow{margin:0 0 6px;color:#79eaff;font-size:12px;font-weight:1000;letter-spacing:.16em;text-transform:uppercase}
+.app-install-dialog h2{margin:0;color:#f7fbff;font-size:clamp(25px,5vw,34px);line-height:1.2}
+.app-install-dialog>p:not(.eyebrow):not(.app-install-note){margin:14px auto 0;max-width:380px;color:#b9cbe0;font-size:15px;line-height:1.7}
+.app-install-benefits{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:20px 0}
+.app-install-benefits span{padding:7px 11px;border:1px solid rgba(126,237,255,.2);border-radius:999px;background:rgba(126,237,255,.07);color:#dffbff;font-size:12px;font-weight:900}
+.ios-install-guide{margin:18px 0;padding:16px 18px;border:1px solid rgba(185,255,79,.2);border-radius:18px;background:rgba(185,255,79,.06);text-align:left}
+.ios-install-guide[hidden]{display:none}
+.ios-install-guide b{color:#e9ffc6}
+.ios-install-guide ol{margin:10px 0 0;padding-left:22px;color:#d6e2ee;line-height:1.8}
+.app-install-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.app-install-actions button{min-height:48px;border-radius:14px;font:inherit;font-weight:1000;cursor:pointer}
+.app-install-primary{border:0;background:linear-gradient(135deg,#3ee4ff,#8f74ff);color:#04111e;box-shadow:0 12px 28px rgba(62,228,255,.18)}
+.app-install-secondary{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#dceaff}
+.app-install-note{margin:14px 0 0;color:#7f94aa;font-size:12px;line-height:1.6}
 @media(max-width:1040px){.workflow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.map-layout,.progress-columns,.todo-memory-layout{grid-template-columns:1fr}.todo-board,.memory-grid{grid-template-columns:1fr}}
-@media(max-width:680px){.workflow-grid,.rule-grid,.command-grid,.todo-board,.memory-grid{grid-template-columns:1fr}.workflow-grid article,.rule-grid article,.command-grid button{border-radius:16px}.quick-actions{gap:8px}.quick-actions a{flex:1 1 calc(50% - 8px);text-align:center}.roadmap-item{grid-template-columns:1fr}.roadmap-item .tag{justify-self:start}}
+@media(max-width:680px){.workflow-grid,.rule-grid,.command-grid,.todo-board,.memory-grid{grid-template-columns:1fr}.workflow-grid article,.rule-grid article,.command-grid button{border-radius:16px}.quick-actions{gap:8px}.quick-actions a{flex:1 1 calc(50% - 8px);text-align:center}.roadmap-item{grid-template-columns:1fr}.roadmap-item .tag{justify-self:start}.app-install-overlay{align-items:end;padding:10px}.app-install-dialog{padding:26px 20px 22px;border-radius:24px}.app-install-actions{grid-template-columns:1fr}.app-install-fab{right:12px;bottom:12px}.app-install-brand{width:76px;height:76px}}

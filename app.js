@@ -2167,3 +2167,105 @@ function setupQuickCommandCopy() {
 
 document.addEventListener('DOMContentLoaded', setupQuickCommandCopy);
 
+let deferredInstallPrompt = null;
+
+function isStandaloneApp() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
+function isIosDevice() {
+  return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+}
+
+function openAppInstallDialog(mode = 'native') {
+  const overlay = document.querySelector('#appInstallOverlay');
+  const confirmButton = document.querySelector('#appInstallConfirm');
+  const iosGuide = document.querySelector('#iosInstallGuide');
+  const note = document.querySelector('#appInstallNote');
+  if (!overlay || !confirmButton || !iosGuide || !note || isStandaloneApp()) return;
+
+  const iosMode = mode === 'ios';
+  iosGuide.hidden = !iosMode;
+  confirmButton.hidden = iosMode;
+  note.textContent = iosMode
+    ? '\u0069\u0050\u0068\u006f\u006e\u0065 \u8207 \u0069\u0050\u0061\u0064 \u9700\u900f\u904e \u0053\u0061\u0066\u0061\u0072\u0069 \u7684\u300c\u52a0\u5165\u4e3b\u756b\u9762\u300d\u5b8c\u6210\u5b89\u88dd\u3002'
+    : '\u5b89\u88dd\u7531\u4f60\u7684\u700f\u89bd\u5668\u78ba\u8a8d\uff0c\u4e0d\u6703\u53d6\u5f97\u984d\u5916\u88dd\u7f6e\u6b0a\u9650\u3002';
+  overlay.hidden = false;
+  document.body.classList.add('install-dialog-open');
+  window.setTimeout(() => (iosMode ? document.querySelector('#appInstallLater') : confirmButton)?.focus(), 0);
+}
+
+function closeAppInstallDialog() {
+  const overlay = document.querySelector('#appInstallOverlay');
+  if (overlay) overlay.hidden = true;
+  document.body.classList.remove('install-dialog-open');
+}
+
+function updateInstallControls() {
+  const installFab = document.querySelector('#appInstallFab');
+  if (!installFab) return;
+  installFab.hidden = isStandaloneApp() || (!deferredInstallPrompt && !isIosDevice());
+}
+
+async function requestAppInstallation() {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  const result = await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  closeAppInstallDialog();
+  updateInstallControls();
+  if (result.outcome !== 'accepted') {
+    const installFab = document.querySelector('#appInstallFab');
+    if (installFab) installFab.hidden = false;
+  }
+}
+
+function setupAppInstallation() {
+  const overlay = document.querySelector('#appInstallOverlay');
+  const installFab = document.querySelector('#appInstallFab');
+  const closeButton = document.querySelector('#appInstallClose');
+  const laterButton = document.querySelector('#appInstallLater');
+  const confirmButton = document.querySelector('#appInstallConfirm');
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+  }
+
+  if (isStandaloneApp()) return;
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    updateInstallControls();
+    if (!window.sessionStorage.getItem('tg123-install-prompt-shown')) {
+      window.sessionStorage.setItem('tg123-install-prompt-shown', '1');
+      window.setTimeout(() => openAppInstallDialog('native'), 900);
+    }
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    closeAppInstallDialog();
+    updateInstallControls();
+  });
+
+  installFab?.addEventListener('click', () => openAppInstallDialog(isIosDevice() ? 'ios' : 'native'));
+  confirmButton?.addEventListener('click', requestAppInstallation);
+  closeButton?.addEventListener('click', closeAppInstallDialog);
+  laterButton?.addEventListener('click', closeAppInstallDialog);
+  overlay?.addEventListener('click', (event) => {
+    if (event.target === overlay) closeAppInstallDialog();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && overlay && !overlay.hidden) closeAppInstallDialog();
+  });
+
+  if (isIosDevice() && !window.sessionStorage.getItem('tg123-ios-install-prompt-shown')) {
+    window.sessionStorage.setItem('tg123-ios-install-prompt-shown', '1');
+    window.setTimeout(() => openAppInstallDialog('ios'), 1200);
+  }
+  updateInstallControls();
+}
+
+document.addEventListener('DOMContentLoaded', setupAppInstallation);
+

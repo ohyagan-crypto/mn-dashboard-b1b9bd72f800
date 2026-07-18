@@ -3,10 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071223">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="TG123">
   <meta name="description" content="TG1、TG2、TG3 即時任務、工作流、技能與安全控制整合中控台">
   <title>TG123 AI 自動化中控台｜任務・工作流・技能</title>
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="styles.css?v=20260717-merged-dashboard">
+  <link rel="manifest" href="manifest.webmanifest?v=20260718-pwa-install">
+  <link rel="icon" type="image/png" href="assets/lanxi-avatar.png">
+  <link rel="apple-touch-icon" href="assets/lanxi-avatar.png">
+  <link rel="stylesheet" href="styles.css?v=20260718-pwa-install">
 </head>
 <body data-agent-view="shami">
   <div class="agent-view-switch page-agent-switch" role="tablist" aria-label="蝦咩、林孟姿與嵐熙切換">
@@ -327,11 +334,36 @@
     </section>
   </main>
 
+  <button type="button" class="app-install-fab" id="appInstallFab" hidden aria-haspopup="dialog">
+    <span aria-hidden="true">&darr;</span>
+    &#23433;&#35037; App
+  </button>
+
+  <div class="app-install-overlay" id="appInstallOverlay" hidden>
+    <section class="app-install-dialog" role="dialog" aria-modal="true" aria-labelledby="appInstallTitle" aria-describedby="appInstallDescription">
+      <button type="button" class="app-install-close" id="appInstallClose" aria-label="&#38364;&#38281;&#23433;&#35037;&#25552;&#31034;">&times;</button>
+      <div class="app-install-brand" aria-hidden="true"><img src="assets/lanxi-avatar.png" alt=""></div>
+      <p class="eyebrow">TG123 App</p>
+      <h2 id="appInstallTitle">&#23433;&#35037;&#21040;&#25163;&#27231;&#25110;&#38651;&#33126;</h2>
+      <p id="appInstallDescription">&#23433;&#35037;&#24460;&#21487;&#24478;&#26700;&#38754;&#30452;&#25509;&#38283;&#21855;&#65292;&#20351;&#29992;&#20840;&#34722;&#24149;&#20013;&#25511;&#21488;&#65292;&#19981;&#24517;&#27599;&#27425;&#37325;&#26032;&#36664;&#20837;&#32178;&#22336;&#12290;</p>
+      <div class="app-install-benefits" aria-label="&#23433;&#35037;&#20778;&#40670;"><span>&#26700;&#38754;&#22294;&#31034;</span><span>&#29544;&#31435;&#35222;&#31383;</span><span>&#24555;&#36895;&#38283;&#21855;</span></div>
+      <div class="ios-install-guide" id="iosInstallGuide" hidden>
+        <b>iPhone&#65295;iPad &#23433;&#35037;&#26041;&#24335;</b>
+        <ol><li>&#40670;&#25802; Safari &#19979;&#26041;&#30340;&#12300;&#20998;&#20139;&#12301;&#25353;&#37397;&#12290;</li><li>&#36984;&#25799;&#12300;&#21152;&#20837;&#20027;&#30059;&#38754;&#12301;&#12290;</li><li>&#40670;&#25802;&#21491;&#19978;&#35282;&#12300;&#26032;&#22686;&#12301;&#12290;</li></ol>
+      </div>
+      <div class="app-install-actions">
+        <button type="button" class="app-install-primary" id="appInstallConfirm">&#31435;&#21363;&#23433;&#35037;</button>
+        <button type="button" class="app-install-secondary" id="appInstallLater">&#31245;&#24460;&#20877;&#35498;</button>
+      </div>
+      <p class="app-install-note" id="appInstallNote">&#23433;&#35037;&#30001;&#20320;&#30340;&#28687;&#35261;&#22120;&#30906;&#35469;&#65292;&#19981;&#26371;&#21462;&#24471;&#38989;&#22806;&#35037;&#32622;&#27402;&#38480;&#12290;</p>
+    </section>
+  </div>
+
   <footer><span>TG123 AI 自動化中控台・即時任務、61 項技能、工作流與安全控制整合・2026 年 7 月 17 日</span></footer>
 
   <script src="live-status-config.js?v=20260704-180800-control-fix"></script>
   <script src="skills-data.js?v=20260717"></script>
-  <script src="app.js?v=20260717-merged-dashboard"></script>
+  <script src="app.js?v=20260718-pwa-install"></script>
 </body>
 </html>
 
